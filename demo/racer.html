@@ -2,14 +2,84 @@
 <html>
 <head>
 	<title>Nintendo Racer</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+.gba{
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	width: 400px;
+	height: 653px;
+	background: url(sprites/NintendoGB.png);
+	background-repeat: no-repeat;
+}
+.gba canvas{
+	display: block;
+	margin: 0 auto;
+	padding-top: 86px;
+	margin-bottom: 120px;
+}
+.gba button{
+	display: inline-block;
+	outline: 0;
+	border: none;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+	background-color: #777777;
+}
+.gba button:active{
+	background-color: #686868;
+}
+.controls{
+	position: relative;
+	height: 200px;
+	margin-left: 10px;
+}
+.up,.right,.down,.left,.start{
+position: absolute;
+}
+.up{
+	left: 50px;
+}
+.right{
+	top: 50px;
+	left: 100px;
+}
+.down{
+	top: 100px;
+	left: 50px;
+}
+.left{
+	top: 50px;
+}
+.gba button.start{
+	border-radius: 6px;
+	width: 55px;
+	height: 15px;
+	transform: rotateZ(-26deg);
+	left: 173px;
+	top: 145px;
+}
+</style>
 </head>
 <body>
-<canvas id="game-canvas" width="150" height="300"></canvas>
+<div class="gba">
+	<canvas id="game-canvas" width="210" height="190"></canvas>
+	<div class="controls">
+	<button class="up" onmousedown="redrawRacerButtons(3);"><i class="fa fa-chevron-up"></i></button>
+	<button class="left" onmousedown="redrawRacerButtons(4);"><i class="fa fa-chevron-left"></i></button>
+	<button class="right" onmousedown="redrawRacerButtons(2);"><i class="fa fa-chevron-right"></i></button>
+	<button class="down" onmousedown="redrawRacerButtons(1);"><i class="fa fa-chevron-down"></i></button>
+	<button class="start" onclick="restartGame();"></button>
+	</div>
+</div>
 <script>
 /* -------------UTILITY FUNCTIONS----------------*/
 function calcBounds(x,y){
-	cx = (x > (150-75))?(150-75):(x < 0)?0:x;
-	cy = (y > (300-75))?(300-75):(y < 0)?0:y;
+	cx = (x > (canvas.width-50))?(canvas.width-50):(x < 0)?0:x;
+	cy = (y > (canvas.height-50))?(canvas.height-50):(y < 0)?0:y;
 	return [cx,cy];
 }
 /**
@@ -31,7 +101,7 @@ function isPixelCollision( first, x, y, other, x2, y2, isCentred )
     x2 = Math.round( x2 );
     y2 = Math.round( y2 );
 
-    var w  = first.width,
+     w  = first.width,
         h  = first.height,
         w2 = other.width,
         h2 = other.height ;
@@ -46,7 +116,7 @@ function isPixelCollision( first, x, y, other, x2, y2, isCentred )
     }
 
     // find the top left and bottom right corners of overlapping area
-    var xMin = Math.max( x, x2 ),
+     xMin = Math.max( x, x2 ),
         yMin = Math.max( y, y2 ),
         xMax = Math.min( x+w, x2+w2 ),
         yMax = Math.min( y+h, y2+h2 );
@@ -57,18 +127,18 @@ function isPixelCollision( first, x, y, other, x2, y2, isCentred )
         return false;
     }
 
-    var xDiff = xMax - xMin,
+     xDiff = xMax - xMin,
         yDiff = yMax - yMin;
 
     // get the pixels out from the images
-    var pixels  = first.data,
+     pixels  = first.data,
         pixels2 = other.data;
 
     // if the area is really small,
     // then just perform a normal image collision check
     if ( xDiff < 4 && yDiff < 4 ) {
-        for ( var pixelX = xMin; pixelX < xMax; pixelX++ ) {
-            for ( var pixelY = yMin; pixelY < yMax; pixelY++ ) {
+        for (  pixelX = xMin; pixelX < xMax; pixelX++ ) {
+            for (  pixelY = yMin; pixelY < yMax; pixelY++ ) {
                 if (
                         ( pixels [ ((pixelX-x ) + (pixelY-y )*w )*4 + 3 ] !== 0 ) &&
                         ( pixels2[ ((pixelX-x2) + (pixelY-y2)*w2)*4 + 3 ] !== 0 )
@@ -93,15 +163,15 @@ function isPixelCollision( first, x, y, other, x2, y2, isCentred )
         // Work out the increments,
         // it's a third, but ensure we don't get a tiny
         // slither of an area for the last iteration (using fast ceil).
-        var incX = xDiff / 3.0,
+         incX = xDiff / 3.0,
             incY = yDiff / 3.0;
         incX = (~~incX === incX) ? incX : (incX+1 | 0);
         incY = (~~incY === incY) ? incY : (incY+1 | 0);
 
-        for ( var offsetY = 0; offsetY < incY; offsetY++ ) {
-            for ( var offsetX = 0; offsetX < incX; offsetX++ ) {
-                for ( var pixelY = yMin+offsetY; pixelY < yMax; pixelY += incY ) {
-                    for ( var pixelX = xMin+offsetX; pixelX < xMax; pixelX += incX ) {
+        for (  offsetY = 0; offsetY < incY; offsetY++ ) {
+            for (  offsetX = 0; offsetX < incX; offsetX++ ) {
+                for (  pixelY = yMin+offsetY; pixelY < yMax; pixelY += incY ) {
+                    for (  pixelX = xMin+offsetX; pixelX < xMax; pixelX += incX ) {
                         if (
                                 ( pixels [ ((pixelX-x ) + (pixelY-y )*w )*4 + 3 ] !== 0 ) &&
                                 ( pixels2[ ((pixelX-x2) + (pixelY-y2)*w2)*4 + 3 ] !== 0 )
@@ -140,19 +210,19 @@ Sprite.prototype = {
 };
 
 /*----------MAIN CODE---------*/
-var px = new Image();
+ var px = new Image();
 px.src = 'sprites/racer-px.png';
-var rx = new Image();
+ var rx = new Image();
 rx.src = 'sprites/racer.png';
-var re = new Image();
+ var re = new Image();
 re.src = 'sprites/racer-enemy.png';
-var background, racer, badGuys = [];
-var canvas = document.getElementById('game-canvas');
-var ctx = canvas.getContext('2d');
-var meX = 75, meY = 225;
-var timerfeel,lastrateupdated;
-var rate = 15;
-var lost = false; //Cannot afford to lose before you start to win right?
+ var background, racer, badGuys = [];
+ var canvas = document.getElementById('game-canvas');
+ var ctx = canvas.getContext('2d');
+ var meX = 80, meY = 140;
+ var timerfeel,lastrateupdated;
+ var rate = 10;
+ var lost = false; //Cannot afford to lose before you start to win right?
 px.onload = function (){
 	createBackground();
 }
@@ -170,34 +240,50 @@ function createBackground(){
 	drawBackground();
 }
 function drawBackground(){
-	ctx.rect(0,0,150,300);
+	ctx.rect(0,0,canvas.width,canvas.height);
 	ctx.fillStyle = background;
 	ctx.fill();
 }
 function createRacers(){
-	racer = new Sprite(rx,75,75);
-	racer.draw(ctx,75,225);
+	racer = new Sprite(rx,50,50);
+	racer.draw(ctx,80,140);
 	document.addEventListener("keydown",function (event){
 		redrawRacer(event);
 	});
 }
 function createBadGuys(){
-	badGuys[0] = new Sprite(re,75,75);
-	badGuys[1] = new Sprite(re,75,75);
+	badGuys[0] = new Sprite(re,50,50);
+	badGuys[1] = new Sprite(re,50,50);
 	badGuys[0].draw(ctx,0,165);
-	badGuys[1].draw(ctx,75,0);
+	badGuys[1].draw(ctx,50,0);
 	badGuys[0].x = 0, badGuys[0].y = 165;
-	badGuys[1].x = 75, badGuys[1].y = 0;
+	badGuys[1].x = 50, badGuys[1].y = 0;
 }
 function redrawRacer(e){
 	if(e.which == 37){
-		meX-=15;
+		meX-=10;
 	}else if(e.which == 39){
-		meX+=15;
+		meX+=10;
 	}else if(e.which == 38){
-		meY-=15;
+		meY-=10;
 	}else if(e.which == 40){
-		meY+=15;
+		meY+=10;
+	}else{
+		meX = meX, meY = meY;
+	}
+	c = calcBounds(meX,meY);
+	meX = c[0];
+	meY = c[1];
+}
+function redrawRacerButtons(code){
+	if(code == 4){
+		meX-=10;
+	}else if(code == 2){
+		meX+=10;
+	}else if(code == 3){
+		meY-=10;
+	}else if(code == 1){
+		meY+=10;
 	}else{
 		meX = meX, meY = meY;
 	}
@@ -222,8 +308,8 @@ function advanceBadGuys(rate){
 function redraw(){
 	if((Date.now() - timerfeel) > 1000){
 		advanceBadGuys(rate);
-		if((Date.now() - lastrateupdated) > 10000){
-			rate+=15;
+		if((Date.now() - lastrateupdated) > 30000){
+			rate+=10;
 			lastrateupdated = Date.now();
 		}
 		timerfeel = Date.now();
@@ -233,13 +319,21 @@ function redraw(){
 	redrawBadGuy();
 	if(!lost){
 		window.requestAnimationFrame(redraw);
-	}else{
-		console.log('LOST THE GAME');
 	}
 }
 function startGame(){
 	lastrateupdated = timerfeel = Date.now();
 	redraw();
+}
+function restartGame(){
+	meX = 80, meY = 140;
+	timerfeel,lastrateupdated;
+	rate = 10;
+	lost = false;
+	createBackground();
+	createRacers();
+	createBadGuys();
+	startGame();
 }
 </script>
 </body>
