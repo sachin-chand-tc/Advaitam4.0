@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nintendo Racer</title>
+</head>
+<body>
+<canvas id="game-canvas" width="150" height="300"></canvas>
+<script>
+/* -------------UTILITY FUNCTIONS----------------*/
+function calcBounds(x,y){
+	cx = (x > (150-75))?(150-75):(x < 0)?0:x;
+	cy = (y > (300-75))?(300-75):(y < 0)?0:y;
+	return [cx,cy];
+}
+/**
+ * @author Joseph Lenton - PlayMyCode.com
+ *
+ * @param first An ImageData object from the first image we are colliding with.
+ * @param x The x location of 'first'.
+ * @param y The y location of 'first'.
+ * @param other An ImageData object from the second image involved in the collision check.
+ * @param x2 The x location of 'other'.
+ * @param y2 The y location of 'other'.
+ * @param isCentred True if the locations refer to the centre of 'first' and 'other', false to specify the top left corner.
+ */
+function isPixelCollision( first, x, y, other, x2, y2, isCentred )
+{
+    // we need to avoid using floats, as were doing array lookups
+    x  = Math.round( x );
+    y  = Math.round( y );
+    x2 = Math.round( x2 );
+    y2 = Math.round( y2 );
+
+    var w  = first.width,
+        h  = first.height,
+        w2 = other.width,
+        h2 = other.height ;
+
+    // deal with the image being centred
+    if ( isCentred ) {
+        // fast rounding, but positive only
+        x  -= ( w/2 + 0.5) << 0
+        y  -= ( h/2 + 0.5) << 0
+        x2 -= (w2/2 + 0.5) << 0
+        y2 -= (h2/2 + 0.5) << 0
+    }
+
+    // find the top left and bottom right corners of overlapping area
+    var xMin = Math.max( x, x2 ),
+        yMin = Math.max( y, y2 ),
+        xMax = Math.min( x+w, x2+w2 ),
+        yMax = Math.min( y+h, y2+h2 );
+
+    // Sanity collision check, we ensure that the top-left corner is both
+    // above and to the left of the bottom-right corner.
+    if ( xMin >= xMax || yMin >= yMax ) {
+        return false;
+    }
+
+    var xDiff = xMax - xMin,
+        yDiff = yMax - yMin;
+
+    // get the pixels out from the images
+    var pixels  = first.data,
+        pixels2 = other.data;
+
+    // if the area is really small,
+    // then just perform a normal image collision check
+    if ( xDiff < 4 && yDiff < 4 ) {
+        for ( var pixelX = xMin; pixelX < xMax; pixelX++ ) {
+            for ( var pixelY = yMin; pixelY < yMax; pixelY++ ) {
+                if (
+                        ( pixels [ ((pixelX-x ) + (pixelY-y )*w )*4 + 3 ] !== 0 ) &&
+                        ( pixels2[ ((pixelX-x2) + (pixelY-y2)*w2)*4 + 3 ] !== 0 )
+                ) {
+                    return true;
+                }
+            }
+        }
+    } else {
+        /* What is this doing?
+         * It is iterating over the overlapping area,
+         * across the x then y the,
+         * checking if the pixels are on top of this.
+         *
+         * What is special is that it increments by incX or incY,
+         * allowing it to quickly jump across the image in large increments
+         * rather then slowly going pixel by pixel.
+         *
+         * This makes it more likely to find a colliding pixel early.
+         */
+
+        // Work out the increments,
+        // it's a third, but ensure we don't get a tiny
+        // slither of an area for the last iteration (using fast ceil).
+        var incX = xDiff / 3.0,
+            incY = yDiff / 3.0;
+        incX = (~~incX === incX) ? incX : (incX+1 | 0);
+        incY = (~~incY === incY) ? incY : (incY+1 | 0);
+
+        for ( var offsetY = 0; offsetY < incY; offsetY++ ) {
+            for ( var offsetX = 0; offsetX < incX; offsetX++ ) {
+                for ( var pixelY = yMin+offsetY; pixelY < yMax; pixelY += incY ) {
+                    for ( var pixelX = xMin+offsetX; pixelX < xMax; pixelX += incX ) {
+                        if (
+                                ( pixels [ ((pixelX-x ) + (pixelY-y )*w )*4 + 3 ] !== 0 ) &&
+                                ( pixels2[ ((pixelX-x2) + (pixelY-y2)*w2)*4 + 3 ] !== 0 )
+                        ) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
+/*-----------Sprite Object------------*/
+function Sprite(img, width, height){
+  this.img = img;
+  this.width = width;
+  this.height = height;
+}
+Sprite.prototype = {
+  draw: function(ctx, x, y){
+      ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.width,
+        this.height,
+        x,
+		y,
+		this.width,
+		this.height
+      );
+    }
+};
+
+/*----------MAIN CODE---------*/
+var px = new Image();
+px.src = 'sprites/racer-px.png';
+var rx = new Image();
+rx.src = 'sprites/racer.png';
+var re = new Image();
+re.src = 'sprites/racer-enemy.png';
+var background, racer, badGuys = [];
+var canvas = document.getElementById('game-canvas');
+var ctx = canvas.getContext('2d');
+var meX = 75, meY = 225;
+var timerfeel,lastrateupdated;
+var rate = 15;
+var lost = false; //Cannot afford to lose before you start to win right?
+px.onload = function (){
+	createBackground();
+}
+rx.onload = function (){
+	createRacers();
+}
+re.onload = function(){
+	createBadGuys();
+}
+window.onload = function (){
+	startGame();
+}
+function createBackground(){
+	background = ctx.createPattern(px,"repeat");
+	drawBackground();
+}
+function drawBackground(){
+	ctx.rect(0,0,150,300);
+	ctx.fillStyle = background;
+	ctx.fill();
+}
+function createRacers(){
+	racer = new Sprite(rx,75,75);
+	racer.draw(ctx,75,225);
+	document.addEventListener("keydown",function (event){
+		redrawRacer(event);
+	});
+}
+function createBadGuys(){
+	badGuys[0] = new Sprite(re,75,75);
+	badGuys[1] = new Sprite(re,75,75);
+	badGuys[0].draw(ctx,0,165);
+	badGuys[1].draw(ctx,75,0);
+	badGuys[0].x = 0, badGuys[0].y = 165;
+	badGuys[1].x = 75, badGuys[1].y = 0;
+}
+function redrawRacer(e){
+	if(e.which == 37){
+		meX-=15;
+	}else if(e.which == 39){
+		meX+=15;
+	}else if(e.which == 38){
+		meY-=15;
+	}else if(e.which == 40){
+		meY+=15;
+	}else{
+		meX = meX, meY = meY;
+	}
+	c = calcBounds(meX,meY);
+	meX = c[0];
+	meY = c[1];
+}
+function redrawBadGuy(){
+	badGuys[0].draw(ctx,badGuys[0].x,badGuys[0].y);
+	badGuys[1].draw(ctx,badGuys[1].x,badGuys[1].y);
+}
+function advanceBadGuys(rate){
+	for(i=0;i<badGuys.length;i++){
+		y = badGuys[i].y;
+		y+=rate;
+		cy = (y > (300))?0:y;
+		badGuys[i].y = cy;
+		if(isPixelCollision(badGuys[i],badGuys[i].x,badGuys[i].y,racer,meX,meY))
+			lost = true;
+	}
+}
+function redraw(){
+	if((Date.now() - timerfeel) > 1000){
+		advanceBadGuys(rate);
+		if((Date.now() - lastrateupdated) > 10000){
+			rate+=15;
+			lastrateupdated = Date.now();
+		}
+		timerfeel = Date.now();
+	}
+	drawBackground();
+	racer.draw(ctx,meX,meY);
+	redrawBadGuy();
+	if(!lost){
+		window.requestAnimationFrame(redraw);
+	}else{
+		console.log('LOST THE GAME');
+	}
+}
+function startGame(){
+	lastrateupdated = timerfeel = Date.now();
+	redraw();
+}
+</script>
+</body>
+</html>
