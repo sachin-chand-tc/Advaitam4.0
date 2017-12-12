@@ -3,16 +3,22 @@
   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style>
-img {
-    width: 100%;
-    height: auto;
+.explode{
+	margin: auto;
+	width: 400px;
+	height: 400px;
+	background: url(100.png);
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 </style>
-  <img src="100.png" class="explode"></img>
+<div class="explode">
+</div>
 <script>
-$('.explode').hide();
 $(document).ready(function (){
+  $('.explode').hide();
   $('.explode').show('explode',{pieces:121},2000);
-  });
+});
 </script>
