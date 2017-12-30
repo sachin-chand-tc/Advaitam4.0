@@ -18,6 +18,7 @@
       }
     </style>
     <link href="includes/navigation.css" rel="stylesheet">
+    <link href="includes/loader.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Lobster" rel="stylesheet">
 
@@ -38,6 +39,13 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
+      <div class="overlay">
+  <div class="loader">
+    <div class="wing1"></div>
+    <div class="bird"></div>
+    <div class="wing2"></div>
+  </div>
+</div>
    
 
         <div class="container">
@@ -58,6 +66,12 @@
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script >
+      $(document).ready(function (){
+        $('.loader').css({'animation': 'flyOut 3s ease-in-out forwards'}); //fly out majestically
+        $('.overlay').fadeOut(3000); //fade out white background to reveal content
+      });
+    </script>
   </body>
 
 </html>
