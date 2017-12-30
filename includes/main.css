@@ -14,7 +14,7 @@ section{
   height: 100vh;
 }
 section:nth-child(1) {
-  background: lightblue;
+  /*background: lightblue;*/
 }
 section:nth-child(2) {
   background: black;
