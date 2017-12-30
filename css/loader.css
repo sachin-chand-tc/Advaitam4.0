@@ -1,131 +1,139 @@
-.loader-overlay{
-			position: fixed;
-			top: 50%;
-			left: 50%;
-		}
-.loading {
-  -webkit-animation:fadein 2s;
-     -moz-animation:fadein 2s;
-       -o-animation:fadein 2s;
-          animation:fadein 2s;
+.loader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -260px;
+  margin-left: -180px;
 }
-@-moz-keyframes fadein {
-  from {opacity:0}
-  to {opacity:1}
+.wing1{
+	position: absolute;
+	top: 48px;
+	background: url(loader/wing1.gif);
+	background-size: 180px,260px;
+	background-repeat: no-repeat;
+	width: 360px;
+	height: 520px;
+	animation: flap1 2s ease-in-out alternate infinite;
 }
-@-webkit-keyframes fadein {
-  from {opacity:0}
-  to {opacity:1}
+.wing2{
+	position: absolute;
+	top: 48px;
+	background: url(loader/wing2.gif);
+	background-size: 180px,260px;
+	background-position: right top;
+	background-repeat: no-repeat;
+	width: 360px;
+	height: 520px;
+	animation: flap2 2s ease-in-out alternate infinite;
 }
-@-o-keyframes fadein {
-  from {opacity:0}
-  to {opacity:1}
+.bird{
+	position: absolute;
+	top: 95px;
+	left: 140px;
+	background: url(loader/body.gif);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100px;
+	height: 356px;
+	z-index: 10;
 }
-@keyframes fadein {
-  from {opacity:0}
-  to {opacity:1}
+@keyframes flap1{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(-30deg);}
 }
-
-.spinner-wrapper {
-  min-width:100%;
-  min-height:100%;
-  height:100%;
-  top:0;
-  left:0;
-  background:rgba(255,255,255,0.93);
-  position:absolute;
-  z-index:300;
+@-webkit-keyframes flap1{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(-30deg);}
 }
-
-.spinner-text {
-    position:absolute;
-    top:41.5%;
-    left:47%;
-    margin:16px 0 0 35px;
-    font-size:14pt;
-    font-family:Arial;
-    color:#BBB;
-    letter-spacing:1px;
-    font-weight:700;
+@-moz-keyframes flap1{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(-30deg);}
 }
-.spinner-text:after{
-    content: "";
-    -webkit-animation:randtxt 1s infinite;
-     -moz-animation:randtxt 1s infinite;
-          animation:randtxt 1s infinite;
-}
-.spinner {
-  margin:0;
-  display:block;
-  position:absolute;
-  left:45%;
-  top:40%;
-  border:25px solid rgba(100,100,100,0.2);
-  width:1px;
-  height:1px;
-  border-left-color:transparent;
-  border-right-color:transparent;
-  -webkit-border-radius:50px;
-     -moz-border-radius:50px;
-          border-radius:50px;
-  -webkit-animation:spin 1.5s infinite;
-     -moz-animation:spin 1.5s infinite;
-          animation:spin 1.5s infinite;
+@-o-keyframes flap1{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(-30deg);}
 }
 
-@-webkit-keyframes spin {
-  0%,100% {-webkit-transform:rotate(0deg) scale(1)}
-  50%     {-webkit-transform:rotate(720deg) scale(0.6)}
+@keyframes flap2{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(30deg);}
+}
+@-webkit-keyframes flap2{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(30deg);}
+}
+@-moz-keyframes flap2{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(30deg);}
+}
+@-o-keyframes flap2{
+	from{transform: rotateZ(0deg);}
+	to{transform: rotateZ(30deg);}
 }
 
-@-moz-keyframes spin  {
-  0%,100% {-moz-transform:rotate(0deg) scale(1)}
-  50%     {-moz-transform:rotate(720deg) scale(0.6)}
+@keyframes flyOut{
+	from{top: 50%;}
+	to{top: -200px;}
 }
-@-o-keyframes spin  {
-  0%,100% {-o-transform:rotate(0deg) scale(1)}
-  50%     {-o-transform:rotate(720deg) scale(0.6)}
+
+@media (max-width: 500px){
+.loader{
+  margin-top: -130px;
+  margin-left: -90px;
 }
-@keyframes spin  {
-  0%,100% {transform:rotate(0deg) scale(1)}
-  50%     {transform:rotate(720deg) scale(0.6)}
+.wing1{
+	background-size: 90px,130px;
+	width: 180px;
+	height: 260px;
 }
-@-webkit-keyframes randtxt{
-    0%{content:"Building a space-ship";}
-    25%{content:"Planting the seeds";}
-    50%{content:"Scanning the exoplanets";}
-    75%{content:"Searching for water on Mars";}
-    100%{content:"Simply Loading";}
+.wing2{
+	padding-left: 7px;
+	background-size: 90px,130px;
+	width: 180px;
+	height: 260px;
 }
-@-moz-keyframes randtxt{
-    0%{content:"Building a space-ship";}
-    25%{content:"Planting the seeds";}
-    50%{content:"Scanning the exoplanets";}
-    75%{content:"Searching for water on Mars";}
-    100%{content:"Simply Loading";}
+.bird{
+	top: 70px;
+	left: 70px;
+	width: 50px;
+	height: 178px;
 }
-@-o-keyframes randtxt{
-    0%{content:"Building a space-ship";}
-    25%{content:"Planting the seeds";}
-    50%{content:"Scanning the exoplanets";}
-    75%{content:"Searching for water on Mars";}
-    100%{content:"Simply Loading";}
 }
-@keyframes randtxt{
-    0%{content:"Building a space-ship";}
-    25%{content:"Planting the seeds";}
-    50%{content:"Scanning the exoplanets";}
-    75%{content:"Searching for water on Mars";}
-    100%{content:"Simply Loading";}
+@media (min-width: 500px){
+.loader{
+  margin-top: -260px;
+  margin-left: -180px;
 }
-.loader-overlay{
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
-    height: 100%;
-    width: 100%;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    background-color: background:#000;
-    overflow-x: hidden; /* Disable horizontal scroll */
+.wing1{
+	background-size: 180px,260px;
+	width: 360px;
+	height: 520px;
+}
+.wing2{
+	padding-left: 15px;
+	background-size: 180px,260px;
+	width: 360px;
+	height: 520px;
+}
+.bird{
+	left: 140px;
+	width: 100px;
+	height: 356px;
+}
+}
+html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+  margin: 0;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(255,255,255,1); /*dim the background*/
 }

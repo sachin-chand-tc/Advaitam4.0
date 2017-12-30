@@ -73,3 +73,33 @@
   });
 
 })(jQuery); // End of use strict
+
+
+/*
+	Added JavaScript with explanatory comments
+*/
+var countDownDate = new Date("Mar 21, 2018 00:00:00").getTime(); //Advaitam 4.0 Date
+var timer = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now; //time left before Advaitam is live
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  if(days < 1){
+  // Display the result in the element with id="demo"
+	$(".timer").html("Only " + hours + "H " + minutes + "M " + seconds + "S to go"); //when < 1 day left
+  }else{
+	$(".timer").html(days + " days left"); //when > 1 days left
+  }
+  // If the count down is finished, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    $("timer").html("ADVAITAM IS LIVE"); //when Advaitam 4.0 is live
+  }
+}, 1000);
+
+$(document).ready(function (){
+	$('.loader').css({'animation': 'flyOut 3s ease-in-out forwards'}); //fly out majestically
+	$('.overlay').fadeOut(3000); //fade out white background to reveal content
+});
