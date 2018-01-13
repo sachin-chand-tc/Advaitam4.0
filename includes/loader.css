@@ -1,4 +1,120 @@
+* {
+box-sizing: border-box;
+}
+
+.loader-container {
+font-family: 'Raleway', sans-serif;
+background: #F9F8F8;
+}
+
+header.header {
+position: absolute;
+top: 50%;
+left: 0;
+width: 100%;
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+header.header h1 {
+font-size: 5rem;
+color: #222222;
+text-align: center;
+margin-top: 0;
+text-transform: uppercase;
+font-weight: 900;
+}
+
+.glitch-window {
+position: absolute;
+top: 0;
+left: -2px;
+width: 100%;
+color: #222222;
+text-shadow: 2px 0 #F9F8F8, -1px 0 yellow, -2px 0 green;
+overflow: hidden;
+-webkit-animation: crt-me 2500ms infinite linear alternate-reverse;
+animation: crt-me 2500ms infinite linear alternate-reverse;
+}
+
+@-webkit-keyframes crt-me {
+0% {
+clip: rect(31px, 9999px, 94px, 0);
+}
+10% {
+clip: rect(112px, 9999px, 76px, 0);
+}
+20% {
+clip: rect(85px, 9999px, 77px, 0);
+}
+30% {
+clip: rect(27px, 9999px, 97px, 0);
+}
+40% {
+clip: rect(64px, 9999px, 98px, 0);
+}
+50% {
+clip: rect(61px, 9999px, 85px, 0);
+}
+60% {
+clip: rect(99px, 9999px, 114px, 0);
+}
+70% {
+clip: rect(34px, 9999px, 115px, 0);
+}
+80% {
+clip: rect(98px, 9999px, 129px, 0);
+}
+90% {
+clip: rect(43px, 9999px, 96px, 0);
+}
+100% {
+clip: rect(82px, 9999px, 64px, 0);
+}
+}
+
+@keyframes crt-me {
+0% {
+clip: rect(31px, 9999px, 94px, 0);
+}
+10% {
+clip: rect(112px, 9999px, 76px, 0);
+}
+20% {
+clip: rect(85px, 9999px, 77px, 0);
+}
+30% {
+clip: rect(27px, 9999px, 97px, 0);
+}
+40% {
+clip: rect(64px, 9999px, 98px, 0);
+}
+50% {
+clip: rect(61px, 9999px, 85px, 0);
+}
+60% {
+clip: rect(99px, 9999px, 114px, 0);
+}
+70% {
+clip: rect(34px, 9999px, 115px, 0);
+}
+80% {
+clip: rect(98px, 9999px, 129px, 0);
+}
+90% {
+clip: rect(43px, 9999px, 96px, 0);
+}
+100% {
+clip: rect(82px, 9999px, 64px, 0);
+}
+}
+.hidden{
+display: none;
+}
+.glitched span{
+	padding-right: 1px;
+}
 .loader{
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,7 +124,7 @@
 .wing1{
 	position: absolute;
 	top: 48px;
-	background: url(loader/wing1.gif);
+	background: url(loader/wing1.png);
 	background-size: 180px,260px;
 	background-repeat: no-repeat;
 	width: 360px;
@@ -19,7 +135,7 @@
 .wing2{
 	position: absolute;
 	top: 48px;
-	background: url(loader/wing2.gif);
+	background: url(loader/wing2.png);
 	background-size: 180px,260px;
 	background-position: right top;
 	background-repeat: no-repeat;
@@ -31,30 +147,13 @@
 	position: absolute;
 	top: 95px;
 	left: 140px;
-	background: url(loader/body.gif);
+	background: url(loader/body.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	width: 100px;
 	height: 356px;
 	z-index: 10;
 }
-/*
-  Chrome 29+ Specific Styling
-*/
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    .wing1{
-		background-image: url(loader/wing1.webp);
-	}
-	.wing2{
-		background-image: url(loader/wing2.webp);
-	}
-	.bird{
-		background-image: url(loader/body.webp);
-	}
-}
-/*
-  Animation Keyframes
-*/
 @keyframes flap1{
 	from{transform: rotateZ(0deg);}
 	to{transform: rotateZ(-30deg);}
@@ -138,20 +237,4 @@
 	width: 100px;
 	height: 356px;
 }
-}
-html, body{
-  min-height: 100%;
-}
-body{
-  position: relative;
-  margin: 0;
-}
-.overlay{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background-color: rgba(255,255,255,1); /*dim the background*/
 }
