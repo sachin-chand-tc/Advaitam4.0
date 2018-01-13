@@ -1,5 +1,3 @@
-
-
 .heading{
   top: 500px;
 }
@@ -18,4 +16,55 @@ section:nth-child(1) {
 }
 section:nth-child(2) {
   background: black;
+}
+
+/* Basic Page Styling */
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+.overlay{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(255,255,255,1); /*dim the background*/
+}
+/*Music Controls*/
+.music-controls img{
+	width: 50px;
+	height: 50px;
+}
+.music-controls{
+	display: block;
+	position: fixed;
+	bottom: 20px;
+	right: -140px;
+	transition: right 1s;
+	-webkit-transition: right 1s;
+}
+.music-controls:hover{
+	right: 10px;
+}
+.timebar{
+	display: inline-block;
+	width: 100px;
+	height: 10px;
+	border-radius: 8px;
+	background-color: #ffe2c4;
+}
+.filler{
+	width: 10px;
+	height: 10px;
+	border-radius: 8px;
+	background-color: #ff7566;
+}
+.control{
+	width: 0px;
+	transition: width 2s;
 }

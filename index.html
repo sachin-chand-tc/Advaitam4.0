@@ -2,76 +2,162 @@
 <html lang="en">
 
   <head>
-
-    <meta charset="utf-8">
+    
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Advaitam-home</title>
-
+    <title>Advaitam - Home</title>
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Lobster" rel="stylesheet" />
     <!-- Bootstrap 4 link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
  
-    <link href="includes/main.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        background-image: url('images/back3.jpeg');
-      }
-    </style>
-    <link href="includes/navigation.css" rel="stylesheet">
-    <link href="includes/loader.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Lobster" rel="stylesheet">
-
-  </head>
-
-  <body >
+	<!-- Custom Styling -->
+    <link href="includes/main.css" rel="stylesheet" />
+	<link href="includes/navigation.css" rel="stylesheet" />
+	<link href="includes/loader.css" rel="stylesheet"/>
 	
-   
+</head>
+<body>
 
-    <section>
-    <!-- Navigation Bar-->
-      <div class"container">
-        <ul class="nav">
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Sponsors</a></li>
-          <li><a href="#">Social Cause</a></li>
-          <li><a href="#">Pro Night</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="overlay">
-  <div class="loader">
-    <div class="wing1"></div>
-    <div class="bird"></div>
-    <div class="wing2"></div>
+<!-- Navigation Bars-->
+<!--Desktop Nav -->
+
+<div class="container">
+<ul class="navRibbon">
+  <li><a href="#">Events</a></li>
+  <li><a href="#">Sponsors</a></li>
+  <li><a href="#">Social Cause</a></li>
+  <li><a href="#">Pro Night</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+</div>
+
+<!-- Mobile Nav -->
+
+<nav id="mobileNav" class="navbar navbar-default">
+  <div class="container-fluid">
+	  <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+	  <h3><a href="#" style="text-decoration: none;">ADVAITAM 4.0</a></h3>
+  </div>
+</nav>
+<div id="mobileSidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Events</a>
+  <a href="#">Sponsors</a>
+  <a href="#">Social Cause</a>
+  <a href="#">Pro Night</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Loader -->
+<div class="loader-container">
+	<div class="overlay">
+		<header class="header">
+		<h1 class="glitched">
+		<span class="s1 hidden">advaitam</span>
+		<span class="s2 hidden">is</span>
+		<span class="s3 hidden">back</span>
+		<span class="s4 hidden">.</span>
+		</h1>
+		</header>
+		<div class="loader">
+			<div class="wing1"></div>
+			<div class="bird"></div>
+			<div class="wing2"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Music Controls -->
+<div class="music-controls">
+	<img id="music-logo" src="images/music.gif" alt="music controls"></img>
+	<a class="btn playbtn"><i class="fa fa-pause"></i></a>
+	<div class="timebar">
+		<div class="filler"></div>
+	</div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+<div class="row col-xs-8 center">
+  <div class="advaitam">
+	<!-- <p>ADVAITAM 4.0</p> -->
   </div>
 </div>
-   
+</div>
 
-        <div class="container">
-        <div class="row col-xs-8 center">
-          <div class="advaitam">
-            <!-- <p>ADVAITAM 4.0</p> -->
-          </div>
-        </div>
-      </div>
+<!-- JQuery and Bootstrap Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    </section>
+<!-- Custom CSS -->
+<script>
+	function openNav() {
+		$("#mobileSidenav").css({'width':"250px"});
+	}
 
-    <section>
-
-    </section>
-
-
+	function closeNav() {
+		$("#mobileSidenav").css({'width':"0px"});
+	}
+	function runLoader(){
+		$(".header").append("<div id='g1' class='glitch-window'></div>");
+		$( "h1.glitched" ).clone().appendTo( ".glitch-window" );
+		$('.s1').removeClass('hidden');
+		setTimeout(function (){
+			$('.s2').removeClass('hidden');
+		},500);
+		setTimeout(function (){
+			$('.s3').removeClass('hidden');
+		},1000);
+		setTimeout(function (){
+			$('.s4').removeClass('hidden');
+		},1500);
+		setTimeout(function (){
+			$('.header').addClass('hidden');
+			$('.loader').css({'display':'block'});
+			$('.loader').css({'animation': 'flyOut 3s ease-in-out forwards'});
+			$('.overlay').fadeOut(3000);
+		},3000);
+	}
 	
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script >
-      $(document).ready(function (){
-        $('.loader').css({'animation': 'flyOut 3s ease-in-out forwards'}); //fly out majestically
-        $('.overlay').fadeOut(3000); //fade out white background to reveal content
-      });
-    </script>
-  </body>
+	/* Music */
+	var audio = new Audio("songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3" ) ;
+	audio.oncanplaythrough = function(){
+		audio.play();
+	}
+
+	audio.onended = function(){
+		audio.src = "songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3";
+		audio.onload = function (){
+			audio.play();
+		}
+	}
+	
+	$('.playbtn').click(function (){
+		if(!audio.paused){
+			audio.pause();
+			$('.playbtn i').removeClass('fa-pause');
+			$('.playbtn i').addClass('fa-play');
+		}else{
+			audio.play();
+			$('.playbtn i').removeClass('fa-play');
+			$('.playbtn i').addClass('fa-pause');
+		}
+	});
+	
+	function pollAudioTime(){
+		$('.filler').css({'width': ((audio.currentTime*100/audio.duration))+'px'});
+		setTimeout(pollAudioTime, 500);
+	}
+	
+	pollAudioTime();
+	/* DOM functions */
+	$(document).ready(function (){
+		runLoader();
+	});
+</script>
+ 
+</body>
 
 </html>
