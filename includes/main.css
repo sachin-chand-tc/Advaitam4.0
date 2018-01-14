@@ -24,6 +24,8 @@ html {
 }
 body {
   min-height: 100%;
+  background: url(../images/eventBack.jpg);
+  background-size: contain;
 }
 .overlay{
   display: block;
