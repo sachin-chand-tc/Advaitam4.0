@@ -16,12 +16,11 @@
     <link href="includes/main.css" rel="stylesheet" />
 	<link href="includes/navigation.css" rel="stylesheet" />
 	<link href="includes/loader.css" rel="stylesheet"/>
-	
 </head>
 <body>
 
 <!-- Navigation Bars-->
-<!--Desktop Nav -->
+<!-- Desktop Nav -->
 
 <div class="container">
 <ul class="navRibbon">
@@ -101,7 +100,7 @@
 		$("#mobileSidenav").css({'width':"0px"});
 	}
 	function runLoader(){
-		$(".header").append("<div id='g1' class='glitch-window'></div>");
+		$(".header").append("<div class='glitch-window'></div>");
 		$( "h1.glitched" ).clone().appendTo( ".glitch-window" );
 		$('.s1').removeClass('hidden');
 		setTimeout(function (){
@@ -153,8 +152,9 @@
 	
 	pollAudioTime();
 	/* DOM functions */
+	runLoader();
 	$(document).ready(function (){
-		runLoader();
+		
 	});
 </script>
  

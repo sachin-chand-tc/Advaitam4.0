@@ -124,7 +124,7 @@ display: none;
 .wing1{
 	position: absolute;
 	top: 48px;
-	background: url(loader/wing1.png);
+	background: url(loader/wing1.gif);
 	background-size: 180px,260px;
 	background-repeat: no-repeat;
 	width: 360px;
@@ -135,7 +135,7 @@ display: none;
 .wing2{
 	position: absolute;
 	top: 48px;
-	background: url(loader/wing2.png);
+	background: url(loader/wing2.gif);
 	background-size: 180px,260px;
 	background-position: right top;
 	background-repeat: no-repeat;
@@ -147,7 +147,7 @@ display: none;
 	position: absolute;
 	top: 95px;
 	left: 140px;
-	background: url(loader/body.png);
+	background: url(loader/body.gif);
 	background-size: contain;
 	background-repeat: no-repeat;
 	width: 100px;
