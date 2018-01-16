@@ -26,6 +26,14 @@ body {
   min-height: 100%;
   background: url(../images/eventBack.jpg);
   background-size: contain;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+/* Media queries for screens with larger heights */
+@media only screen and (max-aspect-ratio: 356/235){
+	body{
+		background-size: cover;
+	}
 }
 .overlay{
   display: block;
@@ -72,6 +80,26 @@ body {
 }
 .playbtn:hover{
 	color: #fc513f;
+}
+.animatedplaybtn{
+	border-radius: 100px;
+	background: transparent;
+	animation: waves 500ms 100 ease-in-out alternate-reverse;
+	-webkit-animation: waves 500ms 100 ease-in-out alternate-reverse;
+}
+@keyframes waves{
+	0%{background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0));},
+	25%{background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.5), rgba(255,255,255,0.3));}
+	50%{background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0.8), rgba(255,255,255,0.6));}
+	75%{background: radial-gradient(circle, rgba(255,255,255,0.4), rgba(255,255,255,0.9), rgba(255,255,255,0.9));}
+	100%{background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));}
+}
+@-webkit-keyframes waves{
+	0%{background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0));},
+	25%{background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.5), rgba(255,255,255,0.3));}
+	50%{background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0.8), rgba(255,255,255,0.6));}
+	75%{background: radial-gradient(circle, rgba(255,255,255,0.4), rgba(255,255,255,0.9), rgba(255,255,255,0.9));}
+	100%{background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));}
 }
 .control{
 	width: 0px;
