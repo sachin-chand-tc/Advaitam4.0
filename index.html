@@ -28,18 +28,18 @@
 <div class="container">
 <div class="nightlyNav">
   <ul class="leftbar">
-	<li><a href="#">Home</a></li>
-	<li><a href="#">Events</a></li>
-	<li><a href="#">Social Cause</a></li>
+	<li><a class="in" href="#home">Home</a></li>
+	<li><a class="in" href="#events">Events</a></li>
+	<li><a class="in" href="#socialcause">Social Cause</a></li>
 	<span class="bar"></span>
   </ul>
   <div class="centerbar">
 	<span id="barlogo"></span>
   </div>
   <ul class="rightbar">
-	<li><a href="#">Pro Night</a></li>
+	<li><a class="in" href="#pronight">Pro Night</a></li>
 	<li><a href="#">Sponsors</a></li>
-	<li><a href="#">Contact us</a></li>
+	<li><a class="in" href="#contactus">Contact us</a></li>
 	<span class="bar"></span>
   </ul>
 </div>
@@ -58,11 +58,12 @@
   </div>
 </nav>
 <div id="mobileSidenav" class="sidenav">
-  <a href="#">Events</a>
+  <a class="in" href="#home">Home</a>
+  <a class="in" href="#events">Events</a>
   <a href="#">Sponsors</a>
-  <a href="#">Social Cause</a>
-  <a href="#">Pro Night</a>
-  <a href="#">Contact</a>
+  <a class="in" href="#socialcause">Social Cause</a>
+  <a class="in" href="#pronight">Pro Night</a>
+  <a class="in" href="#contactus">Contact</a>
 </div>
 
 <!-- Loader -->
@@ -93,15 +94,39 @@
 	</div>
 </div>
 
+<!-- Display Area -->
+<div class="content-displayed container">
+</div>
+<span id="go-diamond">
+	<span class="text"></span>
+</span>
 <!-- Main Content -->
-<div class="container">
+<!--Template of content-container-->
+<div class="content-container container">
 <div class="row col-xs-8 center">
   <div class="advaitam">
 	<!-- <p>ADVAITAM 4.0</p> -->
   </div>
 </div>
 </div>
-
+	<!-- Home Content -->
+	<div id="home" class="content-container container">
+		<img src="images/vintage.png" class="caption"></img>
+		<span class="big-timer"></span>
+	</div>
+	<!-- Events Content -->
+	<div id="events" class="content-container container">
+		Events Placeholder
+	</div>
+	<div id="socialcause" class="content-container container">
+		Social Cause Placeholder
+	</div>
+	<div id="pronight" class="content-container container">
+		Pro Night Placeholder
+	</div>
+	<div id="contactus" class="content-container container">
+		ContactUs Placeholder
+	</div>
 <!-- JQuery and Bootstrap Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -176,10 +201,51 @@
 	}
 	
 	pollAudioTime();
+	/* Utility Functions */
+	function syncTimer(){
+		var countDownDate = new Date("March 21, 2018 00:00:00").getTime(); //Advaitam 4.0 Date
+		var timer = setInterval(function() {
+		  var now = new Date().getTime();
+		  var distance = countDownDate - now; //time left before Advaitam is live
+		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		  if(days < 1){
+		  // Display the result in the element with id="demo"
+			$(".big-timer").html("<span class='num'>" + hours + "</span> hrs <span class='num'>" + minutes + "</span> mins <span class='num'>" + seconds + "</span> secs"); //when < 1 day left
+		  }else{
+			$(".big-timer").html("<span class='num'>" + days + "</span> days <span class='num'>" + hours + "</span> hrs <span class='num'>" + minutes + "</span> mins"); //when > 1 days left
+		  }
+		  // If the count down is finished, write some text 
+		  if (distance < 0) {
+			clearInterval(x);
+			$(".big-timer").html("ADVAITAM 4.0 IS LIVE"); //when Advaitam 4.0 is live
+		  }
+		}, 1000);
+	}
+	
+	function scrollToView(id){
+		$('.content-displayed').slideUp(400, function (){;
+				$('.content-displayed').html($(id).html());
+				$('.content-displayed').css({'margin-top':'200%','display':'block'});
+				$('.content-displayed').animate({
+					marginTop:'13.5vw'
+				},800,"swing");
+			});
+	}
 	/* DOM functions */
 	runLoader();
 	$(document).ready(function (){
-		
+		syncTimer();
+		$('.content-displayed').html($('#home').html());
+		$('.content-displayed').addClass('home');
+		$('#go-diamond').click(function (){
+			scrollToView('#events');
+		});
+		$('a.in[href]').click(function (){
+			scrollToView($(this).attr('href'));
+		});
 	});
 </script>
  

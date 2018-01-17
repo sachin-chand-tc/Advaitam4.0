@@ -7,7 +7,9 @@
   font-weight: bold;
   color: #E3D0A8;
 }
-
+.content-container{
+	display: none;
+}
 section{
   height: 100vh;
 }
@@ -25,9 +27,11 @@ html {
 body {
   min-height: 100%;
   background: url(../images/eventBack.jpg);
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: repeat-x;
+  background-attachement: fixed;
+  overflow-y: hidden;
 }
 /* Media queries for screens with larger heights */
 @media only screen and (max-aspect-ratio: 356/235){
@@ -104,4 +108,76 @@ body {
 .control{
 	width: 0px;
 	transition: width 2s;
+}
+
+/* Content Specific Stylings */
+#go-diamond{
+	display: block;
+	position: fixed;
+	bottom: 15px;
+	left: 48%;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #fff;
+	box-shadow: 0 0 10px #fff;
+	transform: rotateZ(45deg);
+	cursor: pointer;
+}
+#go-diamond .text{
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #fff;
+	border-top: 0;
+	border-left: 0;
+	top: 15%;
+	left: 15%;
+	-webkit-animation: hops 800ms infinite ease-in alternate-reverse;
+	animation: hops 1s infinite ease-out 1s alternate-reverse;
+}
+@keyframes hops{
+	50%{
+		transform: translate(0, 0);
+	}
+	100%{
+		transform: translate(-5px,-5px);
+	}
+}
+@-webkit-keyframes hops{
+	50%{
+		transform: translate(0, 0);
+	}
+	100%{
+		transform: translate(-5px,-5px);
+	}
+}
+.content-displayed{
+	margin: 0;
+	margin-top: 13.5vw;
+	width: 100%;
+	padding: 0;
+	color: #fff;
+	font-size: 16pt;
+	overflow-y: auto;
+}
+/* HOME */
+.home.content-displayed{
+	text-align: center;
+}
+.home .big-timer{
+	color: #fff;
+	font-size: 20pt;
+	font-family: 'League-Gothic';
+}
+.home .big-timer .num{
+	padding-left: 3px;
+	font-size: 36pt;
+	letter-spacing: 0.04em;
+	font-weight: 500;
+}
+.home .caption{
+	display: block;
+	width: 40vw;
+	min-width: 200px;
+	margin: 0 auto;
 }
