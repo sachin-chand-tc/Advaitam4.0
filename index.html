@@ -28,6 +28,7 @@
 <div class="container">
 <div class="nightlyNav">
   <ul class="leftbar">
+	<li><a href="#">Home</a></li>
 	<li><a href="#">Events</a></li>
 	<li><a href="#">Social Cause</a></li>
 	<span class="bar"></span>
@@ -37,6 +38,7 @@
   </div>
   <ul class="rightbar">
 	<li><a href="#">Pro Night</a></li>
+	<li><a href="#">Sponsors</a></li>
 	<li><a href="#">Contact us</a></li>
 	<span class="bar"></span>
   </ul>
@@ -47,12 +49,15 @@
 
 <nav id="mobileNav" class="navbar navbar-default">
   <div class="container-fluid">
-	  <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+	  <span id="sidenav-toggle" style="font-size:30px; cursor:pointer" onclick="openNav()">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+	  </span>
 	  <h3><a href="#" style="text-decoration: none;">ADVAITAM 4.0</a></h3>
   </div>
 </nav>
 <div id="mobileSidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Events</a>
   <a href="#">Sponsors</a>
   <a href="#">Social Cause</a>
@@ -105,10 +110,12 @@
 <script>
 	function openNav() {
 		$("#mobileSidenav").css({'width':"250px"});
+		$('#sidenav-toggle').addClass('closebtn').attr('onclick','closeNav()');
 	}
 
 	function closeNav() {
 		$("#mobileSidenav").css({'width':"0px"});
+		$('#sidenav-toggle').removeClass('closebtn').attr('onclick','openNav()');
 	}
 	function runLoader(){
 		$(".header").append("<div class='glitch-window'></div>");
@@ -137,7 +144,6 @@
 	if(playable !== undefined){
 		playable.then( _ => {
 			//playable
-			
 		}).catch(error =>{
 			$('.playbtn i').removeClass('fa-pause');
 			$('.playbtn i').addClass('fa-play');
@@ -147,9 +153,7 @@
 	}
 	audio.addEventListener('ended', function(){
 		audio.src = "songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3";
-		audio.onload = function (){
-			audio.play();
-		}
+		audio.autoplay = true;
 	},false);
 	$('.animatedplaybtn').click(function (){
 		$(this).removeClass('animatedplaybtn');

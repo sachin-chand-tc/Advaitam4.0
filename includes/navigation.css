@@ -50,9 +50,11 @@
 }
 .nightlyNav > ul.leftbar > .bar{
 	background: linear-gradient(to left, #fff, #4c1a30);
+	background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(76, 26, 48,0.2));
 }
 .nightlyNav > ul.rightbar > .bar{
 	background: linear-gradient(to right, #fff, #4c1a30);
+	background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(76, 26, 48,0.2));
 }
 .nightlyNav > ul.rightbar{
 	left: 55%;
@@ -90,20 +92,13 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-@media only screen and (max-width: 767px){
-	.nightlyNav{
-		display: none;
-	}
-	#mobileNav{
-		display: block;
-	}
-}
 .sidenav {
+	display: none;
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 48px;
     left: 0;
     background-color: rgba(0,0,0,0.9);
     overflow-x: hidden;
@@ -111,7 +106,43 @@
     transition: 0.5s;
     padding-top: 60px;
 }
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
 
+/* Rotate first bar */
+.closebtn .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+	-moz-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.closebtn .bar2 {
+    opacity: 0;
+	/* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+
+  /* Netscape */
+  -moz-opacity: 0;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0;
+}
+
+/* Rotate last bar */
+.closebtn .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+	-moz-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -155,4 +186,19 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 25px;}
+}
+@media only screen and (max-width: 952px){
+	.nightlyNav > ul > li{
+		padding-left: 1.8vw;
+		padding-right: 1.8vw;
+	}
+	
+}
+@media only screen and (max-width: 767px){
+	.nightlyNav{
+		display: none;
+	}
+	#mobileNav,.sidenav{
+		display: block;
+	}
 }
