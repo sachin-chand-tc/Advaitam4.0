@@ -2,13 +2,12 @@
 box-sizing: border-box;
 }
 
-.loader-container {
-font-family: 'Raleway', sans-serif;
-background: #F9F8F8;
+body *:not(.overlay):not(.nightlyNav):not(.music-controls){
+	z-index: 0;
 }
 
 header.header {
-position: absolute;
+position: fixed;
 top: 50%;
 left: 0;
 width: 100%;
@@ -25,7 +24,7 @@ font-weight: 900;
 }
 
 .glitch-window {
-position: absolute;
+position: fixed;
 top: 0;
 left: -2px;
 width: 100%;

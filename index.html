@@ -16,6 +16,9 @@
     <link href="includes/main.css" rel="stylesheet" />
 	<link href="includes/navigation.css" rel="stylesheet" />
 	<link href="includes/loader.css" rel="stylesheet"/>
+	<style>
+
+	</style>
 </head>
 <body>
 
@@ -25,16 +28,18 @@
 <div class="container">
 <div class="nightlyNav">
   <ul class="leftbar">
-	<li><a href="#">Events</a></li>
-	<li><a href="#">Social Cause</a></li>
+	<li><a class="in" href="#home">Home</a></li>
+	<li><a class="in" href="#events">Events</a></li>
+	<li><a class="in" href="#socialcause">Social Cause</a></li>
 	<span class="bar"></span>
   </ul>
   <div class="centerbar">
 	<span id="barlogo"></span>
   </div>
   <ul class="rightbar">
-	<li><a href="#">Pro Night</a></li>
-	<li><a href="#">Contact us</a></li>
+	<li><a class="in" href="#pronight">Pro Night</a></li>
+	<li><a href="#">Sponsors</a></li>
+	<li><a class="in" href="#contactus">Contact us</a></li>
 	<span class="bar"></span>
   </ul>
 </div>
@@ -42,37 +47,39 @@
 
 <!-- Mobile Nav -->
 
-<nav id="mobileNav" class="navbar navbar-default">
+<nav id="mobileNav" class="navbar">
   <div class="container-fluid">
-	  <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+	  <span id="sidenav-toggle" style="font-size:30px; cursor:pointer" onclick="openNav()">
+		<div class="bar1"></div>
+		<div class="bar2"></div>
+		<div class="bar3"></div>
+	  </span>
 	  <h3><a href="#" style="text-decoration: none;">ADVAITAM 4.0</a></h3>
   </div>
 </nav>
 <div id="mobileSidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Events</a>
+  <a class="in" href="#home">Home</a>
+  <a class="in" href="#events">Events</a>
   <a href="#">Sponsors</a>
-  <a href="#">Social Cause</a>
-  <a href="#">Pro Night</a>
-  <a href="#">Contact</a>
+  <a class="in" href="#socialcause">Social Cause</a>
+  <a class="in" href="#pronight">Pro Night</a>
+  <a class="in" href="#contactus">Contact</a>
 </div>
 
 <!-- Loader -->
-<div class="loader-container">
-	<div class="overlay">
-		<header class="header">
-		<h1 class="glitched">
-		<span class="s1 hidden">advaitam</span>
-		<span class="s2 hidden">is</span>
-		<span class="s3 hidden">back</span>
-		<span class="s4 hidden">.</span>
-		</h1>
-		</header>
-		<div class="loader">
-			<div class="wing1"></div>
-			<div class="bird"></div>
-			<div class="wing2"></div>
-		</div>
+<div class="overlay">
+	<header class="header">
+	<h1 class="glitched">
+	<span class="s1 hidden">advaitam</span>
+	<span class="s2 hidden">is</span>
+	<span class="s3 hidden">back</span>
+	<span class="s4 hidden">.</span>
+	</h1>
+	</header>
+	<div class="loader">
+		<div class="wing1"></div>
+		<div class="bird"></div>
+		<div class="wing2"></div>
 	</div>
 </div>
 
@@ -85,27 +92,107 @@
 	</div>
 </div>
 
+<!-- Display Area -->
+<div class="content-displayed">
+	<!-- Home Content -->
+	<section id="home" class="content-container container">
+		<img src="images/vintage.png" class="caption"></img>
+		<span class="big-timer"></span>
+	</section>
+	<!-- Events Content -->
+	<section id="about" class="content-container container">
+		<h3>About Us</h3>
+		<p class="text-justify">
+		Advaitam the official techfest of national institiute of technology agartala is an eclectic grandure presented solely by the student of the college itself. Advaitam though young at its heart traces back its origination since 2012. Back then it was MOKSHA the cultural fest of NITA and AYAM the techno management festival. Which was graced by eminent persons like SAURABH TIWARY in the year 2012 then VISHAL DADLANI and SONA MOHAPATRA in 2013 when it was actually blooming. THE ADVAITAM officially came into existence from 2014 with the eloping of both this fest to fight for SAAMYA (equality ) in the northeastern region being its prime aim in addition to many other things.
+It is a 5 day long technical fest circumscribing a wide range of fields from cultural dance poems and performance to technical setups, modern devices,exciting instruments stretching to mind boggling quizzes and many more. Competeition being its motto so it will obviously include teams and solo participants in each category with exclusive prizes and cash-awards. Roughly the following areas are the ones that are going to be covered 
+		</p>
+	</section>
+	<section id="cultural" class="content-container container text-justify">
+		<h3>Cultural</h3>
+		<ul>
+			<li>Traditional dances</li>
+			<li>Singing evemts</li>
+			<li>Band performances</li>
+			<li>Exhibitions</li>
+			<li>Fine arts</li>
+		</ul>
+	</section>
+	<!--Social Cause Content-->
+	<section id="tech" class="content-container container">
+		<h3>Technical</h3>
+		<ul>	
+			<li>Robotic events</li>
+			<li>Management events</li>
+			<li>Case study</li>
+			<li>Advertisement and documentary making </li>
+			<li>Fun events </li>
+		</ul>
+	</section>
+	<!-- Pro Night Content -->
+	<section id="quiz" class="content-container container box">
+		<h3>Quizzes</h3>
+		<ul>
+			<li>Aptitiude tests</li>
+			<li>Puzzles</li>
+			<li>Brain teasers</li>
+			<li>Presentation competition</li> 
+			<li>Bollywood quizzes </li>
+			<li>Sudoku</li>
+			<li>Minutes to win</li>
+		</ul>
+	</section>
+	<!--Contact Content -->
+	<section id="epilogue" class="content-container container box">
+		With an objective to encompass all of the aforesaid things nita plans to bring out advaitam 2017 to attract innumerous hoards from among all of the country to participate , rejoice , enjoy and a chance to win in their own and individual way.
+	</section>
+</div>
+<span id="go-diamond">
+	<span class="text"></span>
+</span>
 <!-- Main Content -->
-<div class="container">
-<div class="row col-xs-8 center">
-  <div class="advaitam">
-	<!-- <p>ADVAITAM 4.0</p> -->
-  </div>
+<!--Template of content-container-->
+<div id="main-content">
+	<div id="events">
+		<section class="content-container container">
+			Events
+		</section>
+	</div>
+	<div id="socialcause">
+		<section class="content-container container">
+			Social Cause
+		</section>
+	</div>
+	<div id="pronight">
+		<section class="content-container container">
+			Pronight
+		</section>
+	</div>
+	<div id="contactus">
+		<section class="content-container container">
+			Contact
+		</section>
+	</div>
 </div>
-</div>
-
 <!-- JQuery and Bootstrap Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!--Scroll Animation Utility -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
 
 <!-- Custom CSS -->
 <script>
 	function openNav() {
 		$("#mobileSidenav").css({'width':"250px"});
+		$('#sidenav-toggle').addClass('closebtn').attr('onclick','closeNav()');
 	}
 
 	function closeNav() {
 		$("#mobileSidenav").css({'width':"0px"});
+		$('#sidenav-toggle').removeClass('closebtn').attr('onclick','openNav()');
 	}
 	function runLoader(){
 		$(".header").append("<div class='glitch-window'></div>");
@@ -124,23 +211,39 @@
 			$('.header').addClass('hidden');
 			$('.loader').css({'display':'block'});
 			$('.loader').css({'animation': 'flyOut 3s ease-in-out forwards'});
-			$('.overlay').fadeOut(3000);
+			$('.overlay').fadeOut(3000, function (){
+				$('.content-displayed').fadeIn(1000);
+			});
 		},3000);
 	}
 	
 	/* Music */
 	var audio = new Audio("songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3" ) ;
-	audio.oncanplaythrough = function(){
-		audio.play();
+	var playable = audio.play();
+	if(playable !== undefined){
+		playable.then( _ => {
+			//playable
+		}).catch(error =>{
+			$('.playbtn i').removeClass('fa-pause');
+			$('.playbtn i').addClass('fa-play');
+			$('.playbtn').addClass('animatedplaybtn');
+			$('.music-controls').css({'right':'10px'});
+			$('.music-controls').on("touchstart",function (){
+				if($(this).css('right') === "10px"){
+					$(this).css({'right':'-140px'});
+				}else{
+					$(this).css({'right':'10px'});
+				}
+			});
+		});
 	}
-
-	audio.onended = function(){
+	audio.addEventListener('ended', function(){
 		audio.src = "songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3";
-		audio.onload = function (){
-			audio.play();
-		}
-	}
-	
+		audio.autoplay = true;
+	},false);
+	$('.animatedplaybtn').click(function (){
+		$(this).removeClass('animatedplaybtn');
+	});
 	$('.playbtn').click(function (){
 		if(!audio.paused){
 			audio.pause();
@@ -159,10 +262,124 @@
 	}
 	
 	pollAudioTime();
+	/* Utility Functions */
+	function syncTimer(){
+		var countDownDate = new Date("March 21, 2018 00:00:00").getTime(); //Advaitam 4.0 Date
+		var timer = setInterval(function() {
+		  var now = new Date().getTime();
+		  var distance = countDownDate - now; //time left before Advaitam is live
+		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		  if(days < 1){
+		  // Display the result in the element with id="demo"
+			$(".big-timer").html("<span class='num'>" + hours + "</span> hrs <span class='num'>" + minutes + "</span> mins <span class='num'>" + seconds + "</span> secs"); //when < 1 day left
+		  }else{
+			$(".big-timer").html("<span class='num'>" + days + "</span> days <span class='num'>" + hours + "</span> hrs <span class='num'>" + minutes + "</span> mins"); //when > 1 days left
+		  }
+		  // If the count down is finished, write some text 
+		  if (distance < 0) {
+			clearInterval(x);
+			$(".big-timer").html("ADVAITAM 4.0 IS LIVE"); //when Advaitam 4.0 is live
+		  }
+		}, 1000);
+	}
+	function initPageView(){
+		/* Define ScrollMagic Controller */
+		ctrl = new ScrollMagic.Controller({
+			globalSceneOptions: {
+				triggerHook: 'onLeave'
+			}
+		});
+		/* Cache selectors to all animated components */
+		
+		var wh = window.innerHeight,
+			$home = $('#home'),
+			$about = $('#about'),
+			$cultural = $('#cultural'),
+			$tech = $('#tech'),
+			$quiz = $('#quiz'),
+			$epi = $('#epilogue');
+		
+		/* Specify Timeline attributes */
+		var timeline = new TimelineMax();
+		timeline
+		.to($home, 10, {yPercent: -100, autoAlpha: 0, ease: Power4.easeOut})
+		.fromTo($about, 10, {yPercent: 20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Power4.easeOut}, '0')
+		.to($about, 10, {xPercent: -20, autoAlpha: 0})
+		.fromTo($cultural, 10, {yPercent: -20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
+		.to($cultural, 10, {xPercent: -20, autoAlpha: 0})
+		.from($tech, 8, {autoAlpha: 0}, '-=0.3', '0')
+		.to($tech, 8, {autoAlpha: 0}, '+=0.3')
+		.from($quiz, 8, {autoAlpha: 0}, '-=0.3', '0')
+		.to($quiz, 8, {autoAlpha: 0}, '+=0.3')
+		.from($epi, 8, {autoAlpha: 0}, '+=0.3', '0')
+		/* Add Scene to Controller */
+		new ScrollMagic.Scene({
+			offset: wh*0.3,
+			triggerElement: $('body')[0],
+			duration: '700%'
+		})
+		.setTween(timeline)
+		.addTo(ctrl);
+		var scrollAway;
+		$('#go-diamond').mousedown(function (){
+			scrollAway = setInterval(function (){
+				$('html, body').animate({
+				scrollTop: $(window).scrollTop()+100
+			  }, 100);
+			},100);
+		}).mouseup(function (){
+			clearInterval(scrollAway);
+		}).mouseout(function (){
+			clearInterval(scrollAway);
+		});
+	}
+	function destroyPageView(){
+		ctrl.destroy(true);
+	}
 	/* DOM functions */
 	runLoader();
 	$(document).ready(function (){
+		var ctrl = null;
+		syncTimer();
+		if($(window).outerWidth() > 767){
+			initPageView();
+		}
+		$('a.in').on("click",function (){
+			var target = $(this).attr("href");
+			if(target !== "#home"){
+				if(ctrl !== null)
+					destroyPageView();
+				$('.content-displayed').html($(target).html());
+			}else{
+				location.reload();
+			}
+		});
 		
+		/* Fix for fast scrolling on laptop or desktop with mouse */
+		if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
+		window.onmousewheel = document.onmousewheel = wheel;
+
+		function wheel(event) {
+			var delta = 0;
+			if (event.wheelDelta) delta = event.wheelDelta / 120;
+			else if (event.detail) delta = -event.detail / 3;
+
+			handle(delta);
+			if (event.preventDefault) event.preventDefault();
+			event.returnValue = false;
+		}
+
+		function handle(delta) {
+			var time = 1000;
+			var distance = 700;
+			
+			$('html, body').stop().animate({
+				scrollTop: $(window).scrollTop() - (distance * delta)
+			}, time );
+		}
 	});
 </script>
  

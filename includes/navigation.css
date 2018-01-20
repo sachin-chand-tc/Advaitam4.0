@@ -1,5 +1,18 @@
+@font-face {
+    font-family: 'League-Gothic';
+    src:url('League-Gothic.ttf.woff') format('woff'),
+        url('League-Gothic.ttf.svg#League-Gothic') format('svg'),
+        url('League-Gothic.ttf.eot'),
+        url('League-Gothic.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
 #mobileNav{
 	display: none;
+}
+.nightlyNav, #mobileNav{
+	position: absolute;
+	z-index: 1;
 }
 .nightlyNav > ul{
 	display: inline-block;
@@ -19,14 +32,15 @@
 }
 .nightlyNav > ul > li{
 	display: inline-block;
-	padding: 10px;
+	padding: 3px;
 	padding-left: 3vw;
 	padding-right: 3vw;
-	font-size: 14pt;
+	font-size: 20pt;
 }
 .nightlyNav > ul > li a{
 	text-decoration: none;
-	font-family: sans-serif;
+	font-family: 'League-Gothic';
+	text-transform: uppercase;
 	color: #fff;
 }
 .nightlyNav > ul > li a:hover{
@@ -39,9 +53,11 @@
 }
 .nightlyNav > ul.leftbar > .bar{
 	background: linear-gradient(to left, #fff, #4c1a30);
+	background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(76, 26, 48,0.2));
 }
 .nightlyNav > ul.rightbar > .bar{
 	background: linear-gradient(to right, #fff, #4c1a30);
+	background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(76, 26, 48,0.2));
 }
 .nightlyNav > ul.rightbar{
 	left: 55%;
@@ -51,7 +67,7 @@
 .nightlyNav > .centerbar{
 	display: inline-block;
 	position: fixed;
-	top: 66px;
+	top: 64px;
     margin: 0 auto;
 	left: 45%;
 	width: 10vw;
@@ -79,31 +95,67 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-@media only screen and (max-width: 767px){
-	.nightlyNav{
-		display: none;
-	}
-	#mobileNav{
-		display: block;
-	}
-}
 .sidenav {
+	display: none;
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    top: 0;
+    top: 48px;
     left: 0;
-    background-color: #111;
+    background-color: rgba(0,0,0,0.9);
     overflow-x: hidden;
+	white-space: nowrap;
     transition: 0.5s;
     padding-top: 60px;
 }
+#sidenav-toggle,.sidenav{
+	position: fixed;
+	z-index: 1 !important;
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
 
+/* Rotate first bar */
+.closebtn .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+	-moz-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.closebtn .bar2 {
+    opacity: 0;
+	/* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+
+  /* Netscape */
+  -moz-opacity: 0;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0;
+}
+
+/* Rotate last bar */
+.closebtn .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+	-moz-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 26pt;
+	font-family: 'League-Gothic';
+	text-transform: uppercase;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -121,16 +173,16 @@
     margin-left: 50px;
 }
 #mobileNav{
-	background-color: #E0AF46;
+	background: transparent;
 }
 #mobileNav .container-fluid h3{
 	display: inline-block;
 	position: fixed;
 	top: 10px;
-	left: 30.5%;
+	left: 28.5%;
 	margin: auto;
 	font-family: 'Press Start 2P', cursive;
-	font-size: 16pt;
+	font-size: 15pt;
 	text-transform: uppercase;
 	text-shadow: 1px 2px rgba(0, 0, 0, .2);
 }
@@ -140,5 +192,20 @@
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav a {font-size: 25px;}
+}
+@media only screen and (max-width: 952px){
+	.nightlyNav > ul > li{
+		padding-left: 1.8vw;
+		padding-right: 1.8vw;
+	}
+	
+}
+@media only screen and (max-width: 767px){
+	.nightlyNav{
+		display: none;
+	}
+	#mobileNav,.sidenav{
+		display: block;
+	}
 }
