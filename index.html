@@ -93,7 +93,6 @@
 </div>
 
 <!-- Display Area -->
-<<<<<<< HEAD
 <div class="content-displayed">
 	<!-- Home Content -->
 	<section id="home" class="content-container container">
@@ -146,20 +145,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 	<section id="epilogue" class="content-container container box">
 		With an objective to encompass all of the aforesaid things nita plans to bring out advaitam 2017 to attract innumerous hoards from among all of the country to participate , rejoice , enjoy and a chance to win in their own and individual way.
 	</section>
-=======
-<div class="content-displayed container">
-</div>
-<span id="go-diamond">
-	<span class="text"></span>
-</span>
-<!-- Main Content -->
-<!--Template of content-container-->
-<div class="content-container container">
-<div class="row col-xs-8 center">
-  <div class="advaitam">
-	<!-- <p>ADVAITAM 4.0</p> -->
-  </div>
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 </div>
 <span id="go-diamond">
 	<span class="text"></span>
@@ -188,27 +173,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 		</section>
 	</div>
 </div>
-<<<<<<< HEAD
-=======
-	<!-- Home Content -->
-	<div id="home" class="content-container container">
-		<img src="images/vintage.png" class="caption"></img>
-		<span class="big-timer"></span>
-	</div>
-	<!-- Events Content -->
-	<div id="events" class="content-container container">
-		Events Placeholder
-	</div>
-	<div id="socialcause" class="content-container container">
-		Social Cause Placeholder
-	</div>
-	<div id="pronight" class="content-container container">
-		Pro Night Placeholder
-	</div>
-	<div id="contactus" class="content-container container">
-		ContactUs Placeholder
-	</div>
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 <!-- JQuery and Bootstrap Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -264,7 +228,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 			$('.playbtn i').addClass('fa-play');
 			$('.playbtn').addClass('animatedplaybtn');
 			$('.music-controls').css({'right':'10px'});
-<<<<<<< HEAD
 			$('.music-controls').on("touchstart",function (){
 				if($(this).css('right') === "10px"){
 					$(this).css({'right':'-140px'});
@@ -272,8 +235,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 					$(this).css({'right':'10px'});
 				}
 			});
-=======
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 		});
 	}
 	audio.addEventListener('ended', function(){
@@ -324,7 +285,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 		  }
 		}, 1000);
 	}
-<<<<<<< HEAD
 	function initPageView(){
 		/* Define ScrollMagic Controller */
 		ctrl = new ScrollMagic.Controller({
@@ -378,22 +338,10 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 	}
 	function destroyPageView(){
 		ctrl.destroy(true);
-=======
-	
-	function scrollToView(id){
-		$('.content-displayed').slideUp(400, function (){;
-				$('.content-displayed').html($(id).html());
-				$('.content-displayed').css({'margin-top':'200%','display':'block'});
-				$('.content-displayed').animate({
-					marginTop:'13.5vw'
-				},800,"swing");
-			});
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 	}
 	/* DOM functions */
 	runLoader();
 	$(document).ready(function (){
-<<<<<<< HEAD
 		var ctrl = null;
 		syncTimer();
 		if($(window).outerWidth() > 767){
@@ -432,17 +380,6 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 				scrollTop: $(window).scrollTop() - (distance * delta)
 			}, time );
 		}
-=======
-		syncTimer();
-		$('.content-displayed').html($('#home').html());
-		$('.content-displayed').addClass('home');
-		$('#go-diamond').click(function (){
-			scrollToView('#events');
-		});
-		$('a.in[href]').click(function (){
-			scrollToView($(this).attr('href'));
-		});
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 	});
 </script>
  

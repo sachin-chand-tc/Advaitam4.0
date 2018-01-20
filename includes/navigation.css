@@ -109,13 +109,10 @@
     transition: 0.5s;
     padding-top: 60px;
 }
-<<<<<<< HEAD
 #sidenav-toggle,.sidenav{
 	position: fixed;
 	z-index: 1 !important;
 }
-=======
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
@@ -139,7 +136,6 @@
 
   /* IE 5-7 */
   filter: alpha(opacity=0);
-<<<<<<< HEAD
 
   /* Netscape */
   -moz-opacity: 0;
@@ -148,16 +144,6 @@
   -khtml-opacity: 0;
 }
 
-=======
-
-  /* Netscape */
-  -moz-opacity: 0;
-
-  /* Safari 1.x */
-  -khtml-opacity: 0;
-}
-
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 /* Rotate last bar */
 .closebtn .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;

@@ -8,7 +8,6 @@
   color: #E3D0A8;
 }
 .content-container{
-<<<<<<< HEAD
 	position: fixed;
 	margin: 0 auto;
 	margin-top: 13.5vw;
@@ -16,12 +15,6 @@
 	padding: 0;
 	color: #fff;
 	font-size: 16pt;
-=======
-	display: none;
-}
-section{
-  height: 100vh;
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 }
 .content-container:not(#home){
 	padding-left: 20px;
@@ -39,26 +32,10 @@ html, body {
   margin: 0;
 }
 body {
-<<<<<<< HEAD
   background: url(../images/eventBack.jpg), #121d31;
   background-size: contain;
   background-position: top;
   background-repeat: repeat-x;
-=======
-  min-height: 100%;
-  background: url(../images/eventBack.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat-x;
-  background-attachement: fixed;
-  overflow-y: hidden;
-}
-/* Media queries for screens with larger heights */
-@media only screen and (max-aspect-ratio: 356/235){
-	body{
-		background-size: cover;
-	}
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 }
 /* Media queries for screens with larger heights */
 /*@media only screen and (max-aspect-ratio: 356/235){
@@ -180,7 +157,6 @@ body {
 		transform: translate(-5px,-5px);
 	}
 }
-<<<<<<< HEAD
 
 @media only screen and (max-width: 767px){
 	.content-container{
@@ -209,41 +185,17 @@ body::-webkit-scrollbar-thumb {
 	text-align: center;
 }
 #home .big-timer{
-=======
-.content-displayed{
-	margin: 0;
-	margin-top: 13.5vw;
-	width: 100%;
-	padding: 0;
-	color: #fff;
-	font-size: 16pt;
-	overflow-y: auto;
-}
-/* HOME */
-.home.content-displayed{
-	text-align: center;
-}
-.home .big-timer{
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 	color: #fff;
 	font-size: 20pt;
 	font-family: 'League-Gothic';
 }
-<<<<<<< HEAD
 #home .big-timer .num{
-=======
-.home .big-timer .num{
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 	padding-left: 3px;
 	font-size: 36pt;
 	letter-spacing: 0.04em;
 	font-weight: 500;
 }
-<<<<<<< HEAD
 #home .caption{
-=======
-.home .caption{
->>>>>>> 552902023911d07adf0c4239006101741999d0fc
 	display: block;
 	width: 40vw;
 	min-width: 200px;
