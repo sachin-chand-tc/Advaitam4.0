@@ -190,6 +190,27 @@
 	text-decoration: none;
 	color: #fff;
 }
+#footer-nav, #footer-nav *{
+	padding-top: 0;
+	padding-bottom: 0;
+	min-height: 20px !important;
+	height: 20px;
+	font-size: 12pt;
+}
+#footer-nav li{
+	display: inline-block;
+}
+#footer-nav a{
+	text-decoration: none;
+	color: #777;
+	transition: color 0.5s;
+}
+#footer-nav a:hover{
+	color: #000;
+}
+#footer-nav > .navbar-right{
+	padding-right: 20px;
+}
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 25px;}
@@ -207,5 +228,15 @@
 	}
 	#mobileNav,.sidenav{
 		display: block;
+	}
+	#footer-nav > .navbar-right{
+		display: block;
+	}
+	#footer-nav > .navbar-nav{
+		margin:0;
+		margin-left: 50%;
+		transform: translateX(-44%);
+		padding:0;
+		white-space:nowrap;
 	}
 }

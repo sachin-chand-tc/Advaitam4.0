@@ -173,6 +173,24 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 		</section>
 	</div>
 </div>
+
+<!-- Footer -->
+<nav id="footer-nav" class="navbar navbar-default navbar-fixed-bottom">
+    <ul class="nav navbar-nav">
+      <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+    </ul>
+    <div class="navbar-right">
+	  <ul class="nav navbar-nav">
+		<li><a href="#">FAQ</a></li>
+		<li><a href="#">Brochure</a></li>
+		<li><a href="#">After event</a></li>
+		<li><a href="#">@Creatives, Advaitam</a></li>
+	  </ul>
+    </div>
+</nav>
 <!-- JQuery and Bootstrap Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -218,8 +236,10 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 	}
 	
 	/* Music */
-	var audio = new Audio("songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3" ) ;
+	//var audio = new Audio("songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3" ) ;
+	var audio = new Audio("songs/music0.mp3");
 	var playable = audio.play();
+	audio.loop = true;
 	if(playable !== undefined){
 		playable.then( _ => {
 			//playable
@@ -237,10 +257,14 @@ It is a 5 day long technical fest circumscribing a wide range of fields from cul
 			});
 		});
 	}
+	
+	/* CANCELLED
 	audio.addEventListener('ended', function(){
 		audio.src = "songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3";
 		audio.autoplay = true;
 	},false);
+	*/
+	
 	$('.animatedplaybtn').click(function (){
 		$(this).removeClass('animatedplaybtn');
 	});
