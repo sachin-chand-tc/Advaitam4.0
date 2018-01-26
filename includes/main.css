@@ -28,7 +28,7 @@
 }
 /* Basic Page Styling */
 html, body {
-  min-height: 1200%;
+  min-height: 700%;
   margin: 0;
 }
 body {
@@ -53,6 +53,15 @@ body {
   z-index: 1;
   font-family: 'Raleway', sans-serif;
   background-color: rgba(255,255,255,1); /*dim the background*/
+}
+#particle{
+	background: transparent;
+	position: absolute;
+	top: 0;
+	right:0;
+	bottom:0;
+	left:0;
+	z-index:0;
 }
 /*Music Controls*/
 .music-controls img{
