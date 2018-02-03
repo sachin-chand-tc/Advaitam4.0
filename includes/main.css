@@ -7,6 +7,9 @@
   font-weight: bold;
   color: #E3D0A8;
 }
+.microdata{
+	display: none;
+}
 .content-container{
 	position: fixed;
 	margin: 0 auto;
