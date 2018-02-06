@@ -374,3 +374,16 @@ body::-webkit-scrollbar-thumb {
 	image-rendering: crisp-edges;
 	background: #fff;
 }
+
+/*EVENTS*/
+.mario{
+	width: 50px;
+	height: 50px;
+	background: url(../images/mario.gif) no-repeat;
+	background-size: contain;
+}
+@media only screen and (max-width: 767px){
+.games > div{
+	display: inline;
+}
+}
