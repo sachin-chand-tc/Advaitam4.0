@@ -22,6 +22,7 @@
 .content-container:not(#home){
 	padding-left: 20px;
 	max-width: 100%;
+	overflow-y: hidden;
 }
 .content-displayed{
 	display: none;
@@ -209,15 +210,15 @@ body {
 }
 
 /* SCROLL BAR */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 0.3em;
 }
  
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 5px rgb(49, 81, 145);
 }
  
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #929db2;
   outline: 1px solid rgb(49, 81, 145);
 }

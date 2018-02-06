@@ -9,8 +9,12 @@
 }
 #mobileNav{
 	display: none;
+	position: fixed;
+	width: 100%;
+	background: transparent;
+	z-index: 1;
 }
-.nightlyNav, #mobileNav{
+.nightlyNav{
 	position: absolute;
 	z-index: 1;
 }
