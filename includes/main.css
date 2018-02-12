@@ -21,8 +21,10 @@
 }
 .content-container:not(#home){
 	padding-left: 20px;
-	max-width: 100%;
 	overflow-y: hidden;
+	height: 100%;
+	width:	65vw;
+	margin-left: 25vw;
 }
 .content-displayed{
 	display: none;
@@ -44,19 +46,19 @@ section.labeled:nth-of-type(odd) > *{
 }
 section.labeled:nth-of-type(odd) > i.fa,section.labeled:nth-of-type(odd) > .fa-custom{
 	position: absolute;
-	top: 20px;
+	top: 10%;
 	margin-left: 0px;
 	font-size: 10vw;
 }
 section.labeled:nth-of-type(even) > *{
-	margin-right: 15%;
+	margin-right: 25%;
 }
 section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa-custom{
 	position: absolute;
-	top: 20px;
-	margin-right: 5px;
-	right: 0px;
-	font-size: 10vw;
+    top: 2%;
+    margin-top: 20px;
+    right: -12vw;
+    font-size: 8vw;
 }
 /* Basic Page Styling */
 html, body {
@@ -89,7 +91,7 @@ body {
 }
 #particle{
 	background: transparent;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right:0;
 	bottom:0;
@@ -244,9 +246,15 @@ body {
 	margin: 0 auto;
 }
 /*OVERVIEW*/
+#overview{
+	margin-top: 20%;
+	margin-left: 40vw !important;
+}
 #overview > h3{
 	margin-top: 10px;
 	margin-bottom: 0px;
+	margin-left: 50px !important;
+	font-size: 30px;
 }
 #overview > .fa-custom{
 	top: 0px;
@@ -257,7 +265,7 @@ body {
 .connector-holder{
 	margin: 0 auto;
 	width: 5px;
-	height: 10px;
+	height: 15px;
 	background: transparent;
 }
 .connector{
@@ -278,7 +286,6 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 12px solid #fff;
     position: absolute;
     top: 0;
     left: 0;
@@ -382,6 +389,10 @@ body {
 	height: 50px;
 	background: url(../images/mario.gif) no-repeat;
 	background-size: contain;
+}
+.img-thumbnail{
+	background-color: transparent;
+	border: 0;
 }
 @media only screen and (max-width: 767px){
 .games > div{
