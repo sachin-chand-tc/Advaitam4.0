@@ -1,11 +1,15 @@
-.heading{
-  top: 500px;
+/* Basic Page Styling */
+html, body {
+  min-height: 700%;
+  margin: 0;
 }
-.advaitam>p{
-  font-family: 'Press Start 2P', cursive;
-  font-size: 50px;
-  font-weight: bold;
-  color: #E3D0A8;
+body {
+  background: url(../images/eventBack.jpg), #121d31;
+  background-size: contain;
+  background-position: top;
+  background-repeat: repeat-x;
+  padding-bottom: 100px;
+  overflow-x: hidden;
 }
 .microdata{
 	display: none;
@@ -34,6 +38,7 @@
 }
 .content-displayed{
 	display: none;
+	font-family: 'Oswald', sans-serif;
 }
 #main-content{
 	display: none;
@@ -65,19 +70,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     margin-top: 20px;
     right: -12vw;
     font-size: 8vw;
-}
-/* Basic Page Styling */
-html, body {
-  min-height: 700%;
-  margin: 0;
-}
-body {
-  background: url(../images/eventBack.jpg), #121d31;
-  background-size: contain;
-  background-position: top;
-  background-repeat: repeat-x;
-  padding-bottom: 100px;
-  overflow-x: hidden;
 }
 /* Media queries for screens with larger heights */
 /*@media only screen and (max-aspect-ratio: 356/235){
@@ -409,4 +401,22 @@ body {
 .games > div{
 	display: inline;
 }
+}
+/* APP REDIRECT */
+#app_btn{
+	display: block;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin: 0 auto;
+	max-width: 200px;
+	padding: 10px;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	color: #fff;
+	-webkit-transition: background-color 0.5s, color 0.5s;
+	transition: background-color 0.5s, color 0.5s;
+}
+#app_btn:hover{
+	background-color: #fff;
+	color: #000;
 }

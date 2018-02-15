@@ -128,7 +128,6 @@ display: none;
 	background-repeat: no-repeat;
 	width: 360px;
 	height: 520px;
-	
 	animation: flap1 2s ease-in-out alternate infinite;
 }
 .wing2{
@@ -152,6 +151,41 @@ display: none;
 	width: 100px;
 	height: 356px;
 	z-index: 10;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+	.wing1{
+		position: absolute;
+		top: 48px;
+		background: url(loader/wing1.webp);
+		background-size: 180px,260px;
+		background-repeat: no-repeat;
+		width: 360px;
+		height: 520px;
+		animation: flap1 2s ease-in-out alternate infinite;
+	}
+	.wing2{
+		position: absolute;
+		top: 48px;
+		background: url(loader/wing2.webp);
+		background-size: 180px,260px;
+		background-position: right top;
+		background-repeat: no-repeat;
+		width: 360px;
+		height: 520px;
+		animation: flap2 2s ease-in-out alternate infinite;
+	}
+    .bird{
+		position: absolute;
+		top: 95px;
+		left: 140px;
+		background: url(loader/body.webp);
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 100px;
+		height: 356px;
+		z-index: 10;
+	}
 }
 @keyframes flap1{
 	from{transform: rotateZ(0deg);}

@@ -200,6 +200,7 @@
 	min-height: 20px !important;
 	height: 20px;
 	font-size: 12pt;
+	font-family: 'Oswald', Helvetica, sans-serif;
 }
 #footer-nav li{
 	display: inline-block;
