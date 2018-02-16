@@ -1,6 +1,6 @@
 /* Basic Page Styling */
 html, body {
-  min-height: 700%;
+  min-height: 800%;
   margin: 0;
 }
 body {
@@ -71,12 +71,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     right: -12vw;
     font-size: 8vw;
 }
-/* Media queries for screens with larger heights */
-/*@media only screen and (max-aspect-ratio: 356/235){
-	body{
-		background-size: cover;
-	}
-}*/
 .overlay{
   display: block;
   position: fixed;
@@ -201,13 +195,17 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 	}
 }
 
+/* Adhesive Fixes */
+
 @media only screen and (max-width: 767px){
-	.content-container{
-		position: relative;
+	#home{
+        top: 40%;
+        margin-top: 0;
 	}
-	html,body{
-		min-height: 100%;
-	}
+    #about,#cultural{
+        top: 10%;
+        margin-top: 0;
+    }
 }
 
 /* SCROLL BAR */
@@ -347,21 +345,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 }
 .progress .progress-bar{
     border-color: #fff;
-}
-@media only screen and (max-width: 767px){
-	.progress .progress-left .progress-bar, .progress .progress-right .progress-bar{
-		-webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-	}
-	.connector{
-		height: 15px;
-	}
-	#overview > *:not(.fa-custom){
-		margin-left: 10%;
-	}
-	.stagelight-left, .stagelight-right{
-		display: none;
-	}
 }
 
 /*MEDIA COVERAGE*/

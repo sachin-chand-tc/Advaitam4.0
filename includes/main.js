@@ -208,22 +208,15 @@ function openNav() {
 		var ctrl = null, scene = null;
 		syncTimer();
 		$('.content-displayed').html($("#landing").html());
-		if($(window).outerWidth() > 766){
-			initPageView();
-		}
+        initPageView();
 		$('a.in').on("click",function (){
 			var target = $(this).attr("href");
 			if(ctrl !== null)
 				hidePageView();
 			$('.content-displayed').html($(target).html());
-			if(target === "#landing" && $(window).outerWidth() > 767){
-				$("html,body").css({"min-height":"700%"});
-				$(".content-container").css({'position':'fixed'});
-				initPageView();
-			}else{
-				$("html,body").css({"min-height":"100%"});
-				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
-			}
+            $("html,body").css({"min-height":"700%"});
+            $(".content-container").css({'position':'fixed'});
+            initPageView();
 		});
 		
 		
