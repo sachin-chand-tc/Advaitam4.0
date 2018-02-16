@@ -215,7 +215,7 @@ function openNav() {
 				hidePageView();
 			$('.content-displayed').html($(target).html());
             if(target === "#landing"){
-				$("html,body").css({"min-height":"700%"});
+				$("html,body").css({"min-height":"800%"});
 				$(".content-container").css({'position':'fixed'});
 				initPageView();
 			}else{
