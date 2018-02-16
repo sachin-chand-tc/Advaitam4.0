@@ -120,13 +120,13 @@ function openNav() {
 		.to($home, 8, {yPercent: -100, autoAlpha: 0, ease: Power4.easeOut});
         if($(window).innerWidth() < 767){
             timeline
-            .from($aboutHeader, 10, {autoAlpha: 0})
+            .fromTo($aboutHeader, 10, {autoAlpha: 0}, {autoAlpha: 1})
             .to($aboutHeader, 10, {xPercent: -20, autoAlpha: 0})
             .fromTo($aboutBody, 10, {yPercent: 20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Power4.easeOut})
             .to($aboutBody, 10, {xPercent: -20, autoAlpha: 0})
-            .from($culturalHeader, 8, {autoAlpha: 0}, '+=0.3', '0')
+            .fromTo($culturalHeader, 8, {autoAlpha: 0}, {autoAlpha: 1}, '+=0.3', '0')
             .to($culturalHeader, 8, {xPercent: -20, autoAlpha: 0})
-            .fromTo($culturalBody, 8, {yPercent: -20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
+            .fromTo($culturalBody, 8, {autoAlpha: 0, scale: 0.8}, {autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
             .to($culturalBody, 8, {xPercent: -20, autoAlpha: 0});
         }else{
             timeline
@@ -161,9 +161,9 @@ function openNav() {
 		.to($overview, 8, {autoAlpha: 0}, '+=0.3');
         if($(window).innerWidth() < 767){
             timeline
-            .from($quizHeader, 8, {autoAlpha: 0})
+            .fromTo($quizHeader, 8, {autoAlpha: 0}, {autoAlpha: 1})
             .to($quizHeader, 8, {autoAlpha: 0})
-            .from($quizBody, 8, {autoAlpha: 0});
+            .fromTo($quizBody, 8, {autoAlpha: 0}, {autoAlpha: 1});
         }else{
             timeline
             .from($quiz, 8, {autoAlpha: 0}, '-=0.3', '0');
@@ -185,7 +185,15 @@ function openNav() {
 			rotation: "50",
 			autoAlpha: 1
 		},"-=3")
-		.to($quiz, 8, {autoAlpha: 0}, '+=0.3')
+        if($(window).innerWidth() < 767){
+            timeline.
+            to($quizBody, 8, {autoAlpha:0});
+        }
+        else{
+            timeline
+            .to($quiz, 8, {autoAlpha: 0}, '+=0.3');
+        }
+        timeline
 		.from($epi, 8, {autoAlpha: 0}, '+=0.3', '0');
 		/* Add Scene to Controller */
 		scene = new ScrollMagic.Scene({
@@ -212,11 +220,8 @@ function openNav() {
 	function destroyPageView(){
 		ctrl.destroy(true);
 	}
-	function hidePageView(){
-		scene.enabled(false);
-	}
-	function unhidePageView(){
-		scene.enabled(true);
+	function restorePageView(){
+        initPageView();
 	}
 	/* DOM functions */
 	runLoader();
@@ -228,12 +233,12 @@ function openNav() {
 		$('a.in').on("click",function (){
 			var target = $(this).attr("href");
 			if(ctrl !== null)
-				hidePageView();
+				destroyPageView();
 			$('.content-displayed').html($(target).html());
             if(target === "#landing"){
 				$("html,body").css({"min-height":"800%"});
 				$(".content-container").css({'position':'fixed'});
-				initPageView();
+				restorePageView();
 			}else{
 				$("html,body").css({"min-height":"100%"});
 				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
