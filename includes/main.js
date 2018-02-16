@@ -214,9 +214,14 @@ function openNav() {
 			if(ctrl !== null)
 				hidePageView();
 			$('.content-displayed').html($(target).html());
-            $("html,body").css({"min-height":"700%"});
-            $(".content-container").css({'position':'fixed'});
-            initPageView();
+            if(target === "#landing"){
+				$("html,body").css({"min-height":"700%"});
+				$(".content-container").css({'position':'fixed'});
+				initPageView();
+			}else{
+				$("html,body").css({"min-height":"100%"});
+				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
+			}
 		});
 		
 		
