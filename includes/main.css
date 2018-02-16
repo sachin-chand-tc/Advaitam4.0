@@ -128,26 +128,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 .playbtn:hover{
 	color: #fc513f;
 }
-.animatedplaybtn{
-	border-radius: 100px;
-	background: transparent;
-	animation: waves 500ms 100 ease-in-out alternate-reverse;
-	-webkit-animation: waves 500ms 100 ease-in-out alternate-reverse;
-}
-@keyframes waves{
-	0%{background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0));},
-	25%{background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.5), rgba(255,255,255,0.3));}
-	50%{background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0.8), rgba(255,255,255,0.6));}
-	75%{background: radial-gradient(circle, rgba(255,255,255,0.4), rgba(255,255,255,0.9), rgba(255,255,255,0.9));}
-	100%{background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));}
-}
-@-webkit-keyframes waves{
-	0%{background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0));},
-	25%{background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,255,255,0.5), rgba(255,255,255,0.3));}
-	50%{background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0.8), rgba(255,255,255,0.6));}
-	75%{background: radial-gradient(circle, rgba(255,255,255,0.4), rgba(255,255,255,0.9), rgba(255,255,255,0.9));}
-	100%{background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));}
-}
 .control{
 	width: 0px;
 	transition: width 2s;
@@ -367,6 +347,35 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     filter: blur(10px) drop-shadow(30px 30px 10px);
 	image-rendering: crisp-edges;
 	background: #fff;
+}
+
+/* Smaller Screens Fixes */
+@media only screen and (max-width: 767px){
+    #about > .fa, #quiz > .fa{
+        right: initial;
+        left: initial;
+        top: initial;
+        bottom: initial;
+        margin-left: 30vw;
+        font-size: 60pt;
+    }
+    #about > p, #quiz > p{
+        margin-right: initial;
+        padding-right: 2px;
+        margin-left: initial;
+    }
+    #cultural > .fa-custom{
+        top: 120px;
+        left: initial;
+        right: initial;
+        bottom: initial;
+        margin-left: 30vw;
+        width: 100px;
+        height: 100px;
+    }
+    #cultural > p{
+        margin-left: initial;
+    }
 }
 
 /*EVENTS*/

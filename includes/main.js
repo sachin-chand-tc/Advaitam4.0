@@ -31,7 +31,6 @@ function openNav() {
 	}
 	
 	/* Music */
-	//var audio = new Audio("songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3" ) ;
 	var audio = new Audio("songs/music0.mp3");
 	var playable = audio.play();
 	audio.loop = true;
@@ -41,8 +40,6 @@ function openNav() {
 		}).catch(error =>{
 			$('.playbtn i').removeClass('fa-pause');
 			$('.playbtn i').addClass('fa-play');
-			$('.playbtn').addClass('animatedplaybtn');
-			$('.music-controls').css({'right':'10px'});
 			$('.music-controls').on("touchstart",function (){
 				if($(this).css('right') === "10px"){
 					$(this).css({'right':'-140px'});
@@ -52,17 +49,6 @@ function openNav() {
 			});
 		});
 	}
-	
-	/* CANCELLED
-	audio.addEventListener('ended', function(){
-		audio.src = "songs/music"+Math.floor((Math.random()*8.9)/3)+".mp3";
-		audio.autoplay = true;
-	},false);
-	*/
-	
-	$('.animatedplaybtn').click(function (){
-		$(this).removeClass('animatedplaybtn');
-	});
 	$('.playbtn').click(function (){
 		if(!audio.paused){
 			audio.pause();
@@ -105,6 +91,7 @@ function openNav() {
 		}, 1000);
 	}
 	function initPageView(){
+        
 		/* Define ScrollMagic Controller */
 		ctrl = new ScrollMagic.Controller({
 			globalSceneOptions: {
@@ -116,19 +103,39 @@ function openNav() {
 		var wh = window.innerHeight,
 			$home = $('#home'),
 			$about = $('#about'),
+            $aboutHeader = $('#about > .fa'),
+            $aboutBody = $('#about > p, #about > h3'),
 			$cultural = $('#cultural'),
+            $culturalHeader = $('#cultural > .fa-custom'),
+            $culturalBody = $('#cultural > p, #cultural > h3'),
 			$overview = $('#overview'),
 			$quiz = $('#quiz'),
+            $quizHeader = $('#quiz > .fa'),
+            $quizBody = $('#quiz > h3, #quiz p'),
 			$epi = $('#epilogue');
 		
 		/* Specify Timeline attributes */
 		var timeline = new TimelineMax();
 		timeline
-		.to($home, 8, {yPercent: -100, autoAlpha: 0, ease: Power4.easeOut})
-		.fromTo($about, 10, {yPercent: 20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Power4.easeOut}, '0')
-		.to($about, 10, {xPercent: -20, autoAlpha: 0})
-		.fromTo($cultural, 8, {yPercent: -20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
-		.to($cultural, 8, {xPercent: -20, autoAlpha: 0})
+		.to($home, 8, {yPercent: -100, autoAlpha: 0, ease: Power4.easeOut});
+        if($(window).innerWidth() < 767){
+            timeline
+            .from($aboutHeader, 10, {autoAlpha: 0})
+            .to($aboutHeader, 10, {xPercent: -20, autoAlpha: 0})
+            .fromTo($aboutBody, 10, {yPercent: 20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Power4.easeOut})
+            .to($aboutBody, 10, {xPercent: -20, autoAlpha: 0})
+            .from($culturalHeader, 8, {autoAlpha: 0}, '+=0.3', '0')
+            .to($culturalHeader, 8, {xPercent: -20, autoAlpha: 0})
+            .fromTo($culturalBody, 8, {yPercent: -20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
+            .to($culturalBody, 8, {xPercent: -20, autoAlpha: 0});
+        }else{
+            timeline
+            .fromTo($about, 10, {yPercent: 20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Power4.easeOut}, '0')
+            .to($about, 10, {xPercent: -20, autoAlpha: 0})
+            .fromTo($cultural, 8, {yPercent: -20, autoAlpha: 0, scale: 0.8}, {yPercent: 0, autoAlpha: 1, scale: 1, ease: Cubic.easeOut})
+            .to($cultural, 8, {xPercent: -20, autoAlpha: 0});
+        }
+        timeline
 		.from($overview, 8, {autoAlpha: 0}, '-=0.1','0')
 		.fromTo($overview.find(".progress .progress-right .progress-bar"),5,
 		{
@@ -151,8 +158,17 @@ function openNav() {
 		{
 			height: 15
 		})
-		.to($overview, 8, {autoAlpha: 0}, '+=0.3')
-		.from($quiz, 8, {autoAlpha: 0}, '-=0.3', '0')
+		.to($overview, 8, {autoAlpha: 0}, '+=0.3');
+        if($(window).innerWidth() < 767){
+            timeline
+            .from($quizHeader, 8, {autoAlpha: 0})
+            .to($quizHeader, 8, {autoAlpha: 0})
+            .from($quizBody, 8, {autoAlpha: 0});
+        }else{
+            timeline
+            .from($quiz, 8, {autoAlpha: 0}, '-=0.3', '0');
+        }
+		timeline
 		.fromTo($quiz.find(".stagelight-left"),5,{
 			rotation: "0",
 			autoAlpha: 0
