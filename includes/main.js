@@ -240,6 +240,9 @@ function openNav() {
 				$(".content-container").css({'position':'fixed'});
 				restorePageView();
 			}else{
+                if(target === "#contactus"){
+                    $("body").css({'background-attachment': 'fixed'});
+                }
 				$("html,body").css({"min-height":"100%"});
 				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
 			}
