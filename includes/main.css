@@ -380,6 +380,7 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 }
 .departments{
     position: fixed;
+    top: 120px;
 }
 .departments > ul > li{
     text-transform: uppercase;
@@ -390,6 +391,7 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     font-size: 20pt;
     letter-spacing: 0.2em;
     padding: 10px;
+    user-select: none;
 }
 .departments > ul > li.active{
     font-weight: bold;
@@ -398,10 +400,12 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 .contact-container-special{
     position: absolute !important;
     overflow: auto !important;
-    padding-bottom: 100px;
+    padding-bottom: 250px;
+    top: 100px;
 }
 .contacts{
     float: right !important;
+    user-select: none;
 }
 @media only screen and (max-width: 767px){
     .departments{
@@ -410,6 +414,9 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     .contacts{
         float: left !important;
         width: 100%;
+    }
+    .contact-container-special{
+        top: 50px;
     }
 }
 .contacts img{

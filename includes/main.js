@@ -248,11 +248,12 @@ function openNav() {
 			}
             
             $(".content-displayed > section > .departments > ul > li").click(function (){
+                $this = $(this);
                 $("li.active").removeClass("active");
                 $(this).addClass("active");
                 $(".contact-container-special").animate({
-                    scrollTop: $("div[data-target="+$(this).text().toLowerCase()+"]").offset().top - 100 //may need to adjust this
-                },100);
+                    scrollTop: $("div[data-target="+$this.text().toLowerCase()+"]").position().top //may need to adjust this
+                },200);
             });
 		});
 		
