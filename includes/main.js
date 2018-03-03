@@ -241,17 +241,16 @@ function openNav() {
 				restorePageView();
 			}else{
                 if(target === "#contactus"){
-                    $("body").css({'background-attachment': 'fixed'});
+                    $("body").css({"max-height": "100%", "overflow-y":"hidden"});
                 }
 				$("html,body").css({"min-height":"100%"});
 				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
 			}
             
             $(".content-displayed > section > .departments > ul > li").click(function (){
-                console.log("Click registered");
                 $("li.active").removeClass("active");
                 $(this).addClass("active");
-                $("html,body").animate({
+                $(".contacts").animate({
                     scrollTop: $("div[data-target="+$(this).text().toLowerCase()+"]").offset().top - 100 //may need to adjust this
                 },100);
             });

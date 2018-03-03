@@ -397,6 +397,7 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 }
 .contacts{
     float: right !important;
+    overflow-y: scroll;
 }
 @media only screen and (max-width: 767px){
     .departments{
