@@ -241,7 +241,7 @@ function openNav() {
 				restorePageView();
 			}else{
                 if(target === "#contactus"){
-                    $("body").css({"max-height": "100%", "overflow-y":"hidden"});
+                    $("body").css({"height": "100%", "overflow-y":"hidden"});
                 }
 				$("html,body").css({"min-height":"100%"});
 				$(".content-container").css({'position':'relative','overflow-x':'hidden'});
@@ -250,7 +250,7 @@ function openNav() {
             $(".content-displayed > section > .departments > ul > li").click(function (){
                 $("li.active").removeClass("active");
                 $(this).addClass("active");
-                $(".contacts").animate({
+                $(".contact-container-special").animate({
                     scrollTop: $("div[data-target="+$(this).text().toLowerCase()+"]").offset().top - 100 //may need to adjust this
                 },100);
             });

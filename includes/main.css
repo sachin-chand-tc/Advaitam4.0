@@ -395,9 +395,13 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     font-weight: bold;
     font-size: 24pt;
 }
+.contact-container-special{
+    position: absolute !important;
+    overflow: auto !important;
+    padding-bottom: 100px;
+}
 .contacts{
     float: right !important;
-    overflow-y: scroll;
 }
 @media only screen and (max-width: 767px){
     .departments{
