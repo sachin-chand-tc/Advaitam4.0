@@ -401,7 +401,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     position: absolute !important;
     overflow: auto !important;
     padding-bottom: 250px;
-    top: 100px;
 }
 .contacts{
     float: right !important;
@@ -414,9 +413,6 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
     .contacts{
         float: left !important;
         width: 100%;
-    }
-    .contact-container-special{
-        top: 50px;
     }
 }
 .contacts img{
