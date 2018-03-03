@@ -400,7 +400,7 @@ section.labeled:nth-of-type(even) > i.fa,section.labeled:nth-of-type(even) > .fa
 .contact-container-special{
     position: absolute !important;
     overflow: auto !important;
-    padding-bottom: 250px;
+    padding-bottom: 420px;
 }
 .contacts{
     float: right !important;
